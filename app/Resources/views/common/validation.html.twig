@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block validation %}
+        <h4 style="text-align: center; color: red; font-size: 20px; font-weight: bold;">Возникли ошибки в следующих полях:</h4>
+        <ul style="display: block; width: 40%; margin: 0 auto; color:red; list-style: none; font-size: 20px; font-weight: bold;">
+                {% for error in errors %}
+                        <li>{{ error.message }}</li>
+                {% endfor %}
+        </ul>
+{% endblock %}
+

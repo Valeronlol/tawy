@@ -1,0 +1,37 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+main_index:
+    path: /
+    defaults: { _controller: AppBundle:Main:index}
+
+db_create:
+    path: /create
+    defaults: { _controller: AppBundle:Db:create}
+
+db_show:
+    path: /get/{productId}
+    defaults: { _controller: AppBundle:Db:show}
+
+db_update:
+    path: /set/{productId}
+    defaults: { _controller: AppBundle:Db:update}
+
+db_remove:
+    path: /remove/{productId}
+    defaults: { _controller: AppBundle:Db:remove}
+
+admin_index:
+    path: /admin
+    defaults: { _controller: AppBundle:Admin:index}
+
+captcha_routing:
+    resource: "@CaptchaBundle/Resources/config/routing.yml"
+
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:Security:login }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

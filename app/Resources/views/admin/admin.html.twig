@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <header>
+        <div class="wrap">
+            <a class="valeron" href="{{ path('main_index') }}">{{ title|upper }}</a>
+            {#<a class="valeron" href="{{ path('admin_test') }}">test</a>#}
+            <ul class="nav">
+                {% for but in admin_buttons %}
+                    <li>
+                        <a id="{{ but.id }}"  class="navigation" href="{#{{ but.href }}#} {{ path('admin_index', {'slug': but.slug}) }}" title="{{ but.title }}">
+                            <i class="{{ but.i }}"></i>
+                            <span class="disp_none">{{ but.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; color: red;">ADMIN body: {{ test }}, {{ test2 }}</h1>
+{% endblock %}
+
+{% block footer %}
+    <footer style="height: 170px; position: relative;">
+        <div class="wrap">
+
+            <div class="copyright">
+                <h3 style="position: absolute; bottom: 15px; right: 30px; font-size: 1.5rem;">{{ title }}</h3>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

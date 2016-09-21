@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta name="description" content="{{ descr }}">
+    <meta name="Keywords" content="{{ keywords }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ asset('/media/libs/font-awesome-4.5.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/media/css/styles.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Jura:400,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{% block header %}
+<header>
+    <div class="wrap">
+        <a class="valeron" href="{{ path('admin_index') }}">{{ title|upper }}</a>
+        <ul class="nav">
+            <li>
+                <a id="porf_but"  class="navigation  active" href="/" title="Портфолио">
+                    <i class="fa fa-file-image-o fa-lg active"></i>
+                    <span class="disp_none">{{ top_menu_buttons.0 }}</span>
+                </a>
+            </li>
+            <li>
+                <a id="about_but" class="navigation" href="about.html" title="Обо мне">
+                    <i class="fa fa-hand-peace-o fa-lg"></i>
+                    <span class="disp_none">{{ top_menu_buttons.1 }}</span>
+                </a>
+            </li>
+            </li>
+            <li>
+                <a id="cont_but" class="navigation" href="#" title="Контакты">
+                    <i class="fa fa-phone fa-lg"></i>
+                    <span class="disp_none">{{ top_menu_buttons.2 }}</span>
+                </a>
+            </li>
+            <li>
+                <a id="blog_but" class="navigation" href="blog.html" title="Блог">
+                    <i class="fa fa-pencil fa-lg"></i>
+                    <span  class="disp_none">{{ top_menu_buttons.3 }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+<div class="underhead"></div>
+{% endblock %}
+
+{% block content %}
+<article class="main">
+    <div class="wrap">
+        <ul id="hexGrid">
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/massaj.html">
+                    <img src="/media/portfolio/upload/massaj_min.jpg" alt="" />
+                    <h2>О массаже</h2>
+                    <p>Сайт посвящен массажу и смежным с ним практикам</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/sfera.html">
+                    <img src="/media/portfolio/upload/sfera_min.jpg" alt="" />
+                    <h2>Сфера закона</h2>
+                    <p>Сайт-визитка юридической компании</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media//portfolio/over.html">
+                    <img src="/media/img/over.jpg" alt="" />
+                    <h2>Overwatch</h2>
+                    <p>Онлайн игра</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/se.html">
+                    <img src="/media/portfolio/upload/SE_min.jpg" />
+                    <h2>Staff Energy</h2>
+                    <p>Сайт для аутсорсинговой компании</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/reisen.html">
+                    <img src="/media/portfolio/upload/reisen_min.jpg" alt="Ala-Too Reisen" />
+                    <h2>Ala-Too Reisen</h2>
+                    <p>Немецская туристическая фирма</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/shabl.html">
+                    <img src="/media/portfolio/upload/shabl_mini.jpg" alt="" />
+                    <h2>Чистый шаблон для лендинга</h2>
+                    <p>Распрадажа, налетай!</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="/media/portfolio/momo.html">
+                    <img src="/media/portfolio/upload/momo_min.jpg" alt="" />
+                    <h2>Продавец мороженого :)</h2>
+                    <p>Миниатюрный сайт с динамической подгрузкой страницы</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(8).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(10).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(12).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(2).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(3).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(4).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+            <li class="hex">
+                <a class="hexIn" href="#">
+                    <img src="/media/cats/cat(5).jpg" alt="" />
+                    <h2>Место свободно</h2>
+                    <p>А пока-что тут будут котики :)</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</article>
+{% endblock %}
+
+{% block footer %}
+<div class="underhead"></div>
+<footer>
+    <div class="wrap">
+        <div class="contacts">
+            <div class="spoiler-head"><button>Мои контакты <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></button></div>
+            <div class="spoiler-body">
+                <div class="social">
+                    <p><i class="fa fa-skype fa-2x" aria-hidden="true" title="Skype"></i> <a href="skype:valery.kuzivanov">valery.kuzivanov</a></p>
+                    <p>
+                        <a href="http://vk.com/valery1207" title="Vkontakte"><i class="fa fa-vk fa-2x" aria-hidden="true"></i></a>
+                        <span>/</span>
+                        <i class="fa fa-whatsapp fa-lg" aria-hidden="true" title="WhatsApp"></i>
+                        <span>/</span>
+                        <i class="fa fa-phone fa-lg" title="Мой телефон"></i> +996552442882</p>
+                </div>
+            </div>
+        </div>
+        <div class="email">
+            <div class="spoiler-head"><button id="message_me">Отправить мне сообщение <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></button></div>
+            <div class="spoiler-body">
+                <form id="send_form" method="post" name='submitform'>
+                    <input type="text" name="name" placeholder="Имя" required />
+                    <input type="text"  name="phone" placeholder="Телефон" required title='В формате: цифры и знак "+"' />
+                    <br>
+                    <textarea name="text" placeholder="Сообщение" required></textarea>
+                    <br>
+                    {{ form_row(captcha, { 'label': 'Капча' }) }}
+                    <input type="submit" name="btnsubmit" value="Отправить">
+                </form>
+            </div>
+            <p style="color: green; font-size: 18px; font-weight: bold;">
+                {% if email_status is defined %}
+                    {{ email_status }}
+                {% endif %}
+            </p>
+            {% block validation %}
+            {% endblock %}
+        </div>
+        <div class="copyright">
+            <h3>Кузиванов Валерий 2016</h3>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+<script src="{{ asset('/media/libs/jquery-1.12.3.min.js') }}"></script>
+<script src="{{ asset('/media/libs/fancybox/jquery.fancybox.pack.js') }}"></script>
+<script src="{{ asset('/media//js/common.js') }}"></script>
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter37235295 = new Ya.Metrika({ id:37235295, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/37235295" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+</body>
+</html>

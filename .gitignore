@@ -1,0 +1,4 @@
+var/cache/*
+var/logs/*
+var/bootstrap.php.cache
+.idea/*

@@ -10,8 +10,8 @@ class DbController extends MainController
     public function createAction( $title, $description, $content)
     {
         $product = new Product();
-        $product->setName($title);
-        $product->setPrice($content);
+        $product->setTitle($title);
+        $product->setContent($content);
         $product->setDescription($description);
 
         $em = $this->getDoctrine()->getManager();

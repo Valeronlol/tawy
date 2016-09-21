@@ -1,10 +1,5 @@
-var/cache/*
-var/logs/*
-var/bootstrap.php.cache
-.idea/*
+var/
 .idea/
-var/cache/
-var/logs/
 vendor/doctrine/common/lib/vendor/
 vendor/doctrine/dbal/lib/vendor/
 vendor/doctrine/orm/docs/en/_theme/

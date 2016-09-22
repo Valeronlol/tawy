@@ -6,16 +6,11 @@ parameters:
 services:
     app.db_controller:
         class: AppBundle\Controller\DbController
-#        arguments: ["arr"]
-
     admin.category:
-            class: AppBundle\Admin\CategoryAdmin
-            arguments: [~, AppBundle\Entity\Category, ~]
-            tags:
-
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [null, AppBundle\Entity\Category, null]
     admin.blog_post:
         class: AppBundle\Admin\BlogPostAdmin
-        arguments: [~, AppBundle\Entity\BlogPost, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Blog post }
-
+            - { name: sonata.admin, manager_type: orm, label: 'Blog post' }
+        arguments: [null, AppBundle\Entity\BlogPost, null]

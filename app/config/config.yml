@@ -51,19 +51,20 @@ doctrine:
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_general_ci
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
+        types:
+            json:     Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                auto_mapping: true
+                mappings:
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~
 
-# Swiftmailer Configuration
+
 swiftmailer:
    transport: gmail
    host:      smtp.gmail.com
@@ -103,10 +104,63 @@ knp_menu:
 
 imports:
     - { resource: "@AppBundle/Resources/config/admin.yml" }
-
+    - { resource: sonata_classification.yml }
 sonata_admin:
     title:      Val
     title_logo: bundles/app/images/fancy_acme_logo.png
 #    security:
 #        handler: sonata.admin.security.handler.role
 #        handler: sonata.admin.security.handler.acl
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h2>Welcome to the Sonata Admin</h2>
+                        <p>This is a <code>sonata.block.service.text</code> from the Block
+                        Bundle, you can create and add new block in these area by configuring
+                        the <code>sonata_admin</code> section.</p> <br /> For instance, here
+                        a RSS feed parser (<code>sonata.block.service.rss</code>):
+            -
+                position: right
+                type: sonata.block.service.rss
+                roles: [POST_READER]
+                settings:
+                    title: Sonata Project's Feeds
+                    url: https://sonata-project.org/blog/archive.rss
+sonata_core: ~
+
+sonata_media:
+    # if you don't use default namespace configuration
+    class:
+        media: MyVendor\MediaBundle\Entity\Media
+        gallery: MyVendor\MediaBundle\Entity\Gallery
+        gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+    default_context: default # you need to set a context
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+                - sonata.media.provider.vimeo
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     false

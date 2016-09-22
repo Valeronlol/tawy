@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zend\\EventManager\\' => array($vendorDir . '/zendframework/zend-eventmanager/src'),
+    'Zend\\Code\\' => array($vendorDir . '/zendframework/zend-code/src'),
+    'Vich\\UploaderBundle\\' => array($vendorDir . '/vich/uploader-bundle'),
     'Tests\\' => array($baseDir . '/tests'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
     'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
@@ -24,8 +27,16 @@ return array(
     'Symfony\\Bridge\\PhpUnit\\' => array($vendorDir . '/symfony/phpunit-bridge'),
     'Symfony\\Bridge\\Monolog\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Monolog'),
     'Symfony\\Bridge\\Doctrine\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Doctrine'),
+    'Sonata\\NotificationBundle\\' => array($vendorDir . '/sonata-project/notification-bundle'),
+    'Sonata\\MediaBundle\\' => array($vendorDir . '/sonata-project/media-bundle'),
+    'Sonata\\IntlBundle\\' => array($vendorDir . '/sonata-project/intl-bundle'),
+    'Sonata\\EasyExtendsBundle\\' => array($vendorDir . '/sonata-project/easy-extends-bundle'),
+    'Sonata\\Doctrine\\Tests\\' => array($vendorDir . '/sonata-project/doctrine-extensions/tests'),
+    'Sonata\\Doctrine\\' => array($vendorDir . '/sonata-project/doctrine-extensions/src'),
     'Sonata\\DoctrineORMAdminBundle\\' => array($vendorDir . '/sonata-project/doctrine-orm-admin-bundle'),
+    'Sonata\\DatagridBundle\\' => array($vendorDir . '/sonata-project/datagrid-bundle'),
     'Sonata\\CoreBundle\\' => array($vendorDir . '/sonata-project/core-bundle'),
+    'Sonata\\ClassificationBundle\\' => array($vendorDir . '/sonata-project/classification-bundle'),
     'Sonata\\Cache\\Tests\\' => array($vendorDir . '/sonata-project/cache/test'),
     'Sonata\\Cache\\' => array($vendorDir . '/sonata-project/cache/lib'),
     'Sonata\\BlockBundle\\' => array($vendorDir . '/sonata-project/block-bundle'),

@@ -8,8 +8,8 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '8ac9dba77d5c65db2811440ee8265f5d' => __DIR__ . '/..' . '/sonata-project/block-bundle/Resources/stubs/symfony2.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
@@ -22,6 +22,15 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\EventManager\\' => 18,
+            'Zend\\Code\\' => 10,
+        ),
+        'V' => 
+        array (
+            'Vich\\UploaderBundle\\' => 20,
+        ),
         'T' => 
         array (
             'Tests\\' => 6,
@@ -45,8 +54,16 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'Sonata\\NotificationBundle\\' => 26,
+            'Sonata\\MediaBundle\\' => 19,
+            'Sonata\\IntlBundle\\' => 18,
+            'Sonata\\EasyExtendsBundle\\' => 25,
+            'Sonata\\Doctrine\\Tests\\' => 22,
+            'Sonata\\Doctrine\\' => 16,
             'Sonata\\DoctrineORMAdminBundle\\' => 30,
+            'Sonata\\DatagridBundle\\' => 22,
             'Sonata\\CoreBundle\\' => 18,
+            'Sonata\\ClassificationBundle\\' => 28,
             'Sonata\\Cache\\Tests\\' => 19,
             'Sonata\\Cache\\' => 13,
             'Sonata\\BlockBundle\\' => 19,
@@ -96,6 +113,18 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\EventManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-eventmanager/src',
+        ),
+        'Zend\\Code\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-code/src',
+        ),
+        'Vich\\UploaderBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vich/uploader-bundle',
+        ),
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -168,13 +197,45 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Doctrine',
         ),
+        'Sonata\\NotificationBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/notification-bundle',
+        ),
+        'Sonata\\MediaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/media-bundle',
+        ),
+        'Sonata\\IntlBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/intl-bundle',
+        ),
+        'Sonata\\EasyExtendsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/easy-extends-bundle',
+        ),
+        'Sonata\\Doctrine\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/tests',
+        ),
+        'Sonata\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/src',
+        ),
         'Sonata\\DoctrineORMAdminBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/doctrine-orm-admin-bundle',
         ),
+        'Sonata\\DatagridBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/datagrid-bundle',
+        ),
         'Sonata\\CoreBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/core-bundle',
+        ),
+        'Sonata\\ClassificationBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/classification-bundle',
         ),
         'Sonata\\Cache\\Tests\\' => 
         array (
@@ -267,6 +328,17 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
     );
 
     public static $prefixesPsr0 = array (
+        'Z' => 
+        array (
+            'ZendDiagnostics\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/zendframework/zenddiagnostics/src',
+            ),
+            'ZendDiagnosticsTest\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/zendframework/zenddiagnostics/tests',
+            ),
+        ),
         'T' => 
         array (
             'Twig_Extensions_' => 
@@ -283,6 +355,57 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
+            ),
+        ),
+        'P' => 
+        array (
+            'ProxyManager\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
+            ),
+            'PhpOption\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
+            ),
+            'PhpCollection' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
+            ),
+        ),
+        'M' => 
+        array (
+            'Metadata\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/metadata/src',
+            ),
+        ),
+        'J' => 
+        array (
+            'JMS\\SerializerBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/serializer-bundle',
+            ),
+            'JMS\\Serializer' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/serializer/src',
+            ),
+            'JMS\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/parser-lib/src',
+            ),
+        ),
+        'I' => 
+        array (
+            'Imagine' => 
+            array (
+                0 => __DIR__ . '/..' . '/imagine/imagine/lib',
+            ),
+        ),
+        'G' => 
+        array (
+            'Gaufrette' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/gaufrette/src',
             ),
         ),
         'D' => 
@@ -310,6 +433,13 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
             'Doctrine\\Common\\Annotations\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
+            ),
+        ),
+        'B' => 
+        array (
+            'Buzz' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib',
             ),
         ),
     );

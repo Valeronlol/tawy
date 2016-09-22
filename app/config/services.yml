@@ -7,3 +7,15 @@ services:
     app.db_controller:
         class: AppBundle\Controller\DbController
 #        arguments: ["arr"]
+
+    admin.category:
+            class: AppBundle\Admin\CategoryAdmin
+            arguments: [~, AppBundle\Entity\Category, ~]
+            tags:
+
+    admin.blog_post:
+        class: AppBundle\Admin\BlogPostAdmin
+        arguments: [~, AppBundle\Entity\BlogPost, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog post }
+

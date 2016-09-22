@@ -29,7 +29,12 @@
         "symfony/console": "~2.3|~3.0",
         "symfony/phpunit-bridge": "~2.7|~3.0",
         "symfony/validator": "~2.3|~3.0",
-        "symfony/yaml": "~2.3|~3.0"
+        "symfony/yaml": "~2.3|~3.0",
+        "sonata-project/admin-bundle": "3.*",
+        "symfony/security-acl": "2.8.*",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "sonata-project/block-bundle": "^3.2",
+        "knplabs/knp-menu-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

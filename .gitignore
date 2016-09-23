@@ -4,3 +4,12 @@ vendor/doctrine/common/lib/vendor/
 vendor/doctrine/dbal/lib/vendor/
 vendor/doctrine/orm/docs/en/_theme/
 vendor/doctrine/orm/lib/vendor/
+
+src/Application/Sonata/MediaBundle/Command/
+src/Application/Sonata/MediaBundle/Controller/
+src/Application/Sonata/MediaBundle/DependencyInjection/
+src/Application/Sonata/MediaBundle/Resources/config/routing/
+src/Application/Sonata/MediaBundle/Resources/views/
+web/uploads/
+
+.gitignore

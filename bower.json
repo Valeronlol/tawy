@@ -1,0 +1,13 @@
+{
+  "name": "media",
+  "homepage": "https://github.com/Valeronlol/tawy",
+  "authors": [
+    "Valery Kuzivanov <valery.kuzivanov@sibers.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

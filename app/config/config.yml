@@ -155,12 +155,27 @@ sonata_media:
             formats:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
-
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/
-
     filesystem:
         local:
             directory:  "%kernel.root_dir%/../web/uploads/media"
             create:     false
+monolog:
+    handlers:
+        filter_for_errors:
+            type: fingers_crossed
+            # if *one* log is error or higher, pass *all* to file_log
+            action_level: error
+            handler: file_log
+
+        # now passed *all* logs, but only if one log is error or higher
+        file_log:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+
+        # still passed *all* logs, and still only logs error or higher
+        syslog_handler:
+            type: syslog
+            level: error

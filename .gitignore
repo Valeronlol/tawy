@@ -12,4 +12,7 @@ src/Application/Sonata/MediaBundle/Resources/config/routing/
 src/Application/Sonata/MediaBundle/Resources/views/
 web/uploads/
 
+vendor/captcha-com/captcha
+vendor/friendsofsymfony/user-bundle
+
 .gitignore

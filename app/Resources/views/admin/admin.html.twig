@@ -21,6 +21,10 @@
 
 {% block content %}
     <h1 style="text-align: center; color: red;">ADMIN body: {{ test }}, {{ test2 }}</h1>
+
+    {% if chetko is defined %}
+        <span style="font-size: 20px; font-weight: bold; color: forestgreen; margin: 15px 0; display: block;">{{ chetko }}</span>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

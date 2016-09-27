@@ -27,7 +27,7 @@ function toggler(){
   });
 
 //fancybox
-   $(".fan_img").fancybox(); 
+   $(".fan_img").fancybox();
 
 //Form 
 //   $("#send_form").submit(function() {

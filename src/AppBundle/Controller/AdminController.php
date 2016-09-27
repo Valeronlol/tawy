@@ -64,20 +64,16 @@ class AdminController extends MainController
                 $this->setData( array('form' => $form->createView()) );
                 $form->handleRequest($request);
 
-                //Form validation
+                //Form validation OK
                 if ($form->isSubmitted() && $form->isValid()) {
                     $validFormData = $form->getData(); //obj
-//                    $response = $this->forward('AppBundle:Db:create', array(
-//                        'title'  => $validFormData->title,
-//                        'description' => $validFormData->description,
-//                        'content' => $validFormData->content,
-//                    ));
 
                     $dbservice = $this->get('DBservice');
                     $dbservice->createAction( $validFormData->title, $validFormData->description, $validFormData->content );
-
-                    if ($dbservice)
-                        return $this->redirect($this->generateUrl('admin_index'));
+                    if ($dbservice){
+                        $this->setData(array('chetko' => 'Статья добавлена!'));
+                        return $this->render('admin/admin.html.twig', $this->getData());
+                    }
                 }
 
                 return $this->render( "admin/add.html.twig", $this->getData() );

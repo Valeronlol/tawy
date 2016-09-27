@@ -67,12 +67,16 @@ class AdminController extends MainController
                 //Form validation
                 if ($form->isSubmitted() && $form->isValid()) {
                     $validFormData = $form->getData(); //obj
-                    $response = $this->forward('AppBundle:Db:create', array(
-                        'title'  => $validFormData->title,
-                        'description' => $validFormData->description,
-                        'content' => $validFormData->content,
-                    ));
-                    if ($response)
+//                    $response = $this->forward('AppBundle:Db:create', array(
+//                        'title'  => $validFormData->title,
+//                        'description' => $validFormData->description,
+//                        'content' => $validFormData->content,
+//                    ));
+
+                    $dbservice = $this->get('DBservice');
+                    $dbservice->createAction( $validFormData->title, $validFormData->description, $validFormData->content );
+
+                    if ($dbservice)
                         return $this->redirect($this->generateUrl('admin_index'));
                 }
 

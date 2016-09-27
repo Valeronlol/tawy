@@ -33,9 +33,6 @@ class MainController extends Controller
 
     public function indexAction(Request $request)
     {
-        // logger activation
-        $logger = $this->get('logger');
-
         //captcha creating
         $task = new Contactme();
         $task->setCaptchaCode('');
@@ -65,7 +62,6 @@ class MainController extends Controller
             else{
                 $this->sendMail($subject, $name, $contact);
                 $this->setData(array('email_status' => 'Сообщение отправлено.'));
-                $logger->info('Mail sended!');
             }
 
         }

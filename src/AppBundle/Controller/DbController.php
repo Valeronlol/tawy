@@ -2,10 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
 
-class DbController extends MainController
+class DbController extends Controller
 {
     public function createAction( $title, $description, $content)
     {
@@ -34,7 +35,7 @@ class DbController extends MainController
         }
 
         return new Response('description: '.$product->getDescription() . '<br>'
-            .'price: '. $product->getPrice()
+            .'id: '. $product->getId()
         );
     }
 

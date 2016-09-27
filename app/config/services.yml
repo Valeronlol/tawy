@@ -1,16 +1,22 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+
 
 services:
-    app.db_controller:
-        class: AppBundle\Controller\DbController
+    service.db:
+        class: AppBundle\Services\Db
+
     admin.category:
         class: AppBundle\Admin\CategoryAdmin
         arguments: [null, AppBundle\Entity\Category, null]
+
     admin.blog_post:
         class: AppBundle\Admin\BlogPostAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, label: 'Blog post' }
         arguments: [null, AppBundle\Entity\BlogPost, null]
+
+    DBservice:
+        class: AppBundle\Services\Db
+        arguments: [ @doctrine.orm.entity_manager ,'@service_container' ]

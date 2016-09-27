@@ -1,22 +1,87 @@
 <?php
+namespace AppBundle\Services;
 
-namespace AppBundle\Lib;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\Product;
 
-use AppBundle\Controller\DbController;
-
-class DbLib
+class Db extends Controller
 {
-//    protected $db;
-//
-//    public function __construct( DbController $db)
-//    {
-//        $this->db = $db;
-//    }
-//
-//    public function createAction( )
-//    {
-//
-//    }
+//    protected $em;
+    protected $container;
 
+    public function __construct(EntityManager $entityManager, Container $container)
+    {
+//        $this->em = $entityManager;
+        $this->container = $container;
+    }
+
+    public function showAction($productId)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository('AppBundle:Product')
+            ->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$productId
+            );
+        }
+
+        return new Response('description: '.$product->getDescription() . '<br>'
+            .'price: '. $product->getId()
+        );
+    }
+
+    public function createAction( $title, $description, $content)
+    {
+        $product = new Product();
+        $product->setTitle($title);
+        $product->setContent($content);
+        $product->setDescription($description);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return new Response('Saved new product with id '.$product->getId());
+    }
+
+    public function updateAction($productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('AppBundle:Product')->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$productId
+            );
+        }
+
+        $product->setContent('Mouse!');
+        $product->setDescription('Krasava!');
+        $em->flush();
+
+        return $this->redirectToRoute('main_index');
+    }
+
+    public function removeAction($productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('AppBundle:Product')->find($productId);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$productId
+            );
+        }
+
+        $em->remove($product);
+        $em->flush();
+
+        return $this->redirectToRoute('main_index');
+    }
 
 }

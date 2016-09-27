@@ -170,6 +170,48 @@ h1 {
     color: #bc9bef
 }
 
+#all_articles{
+    width: 100%;
+    max-width: 1200px;
+    table-layout: fixed;
+    background: rgba(0,0,0, .15);
+}
+#all_articles th{
+    height: 60px;
+    background: rgba(0,0,0, .3);
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #d4d4d4;
+}
+#all_articles td{
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #d4d4d4;
+}
+#all_articles .descr{
+    max-width: 25%;
+    overflow-y: auto;
+}
+
+#all_articles .fa-times{
+    color: darkred;
+    transition: .3s ease;
+}
+
+#all_articles .fa-times:hover{
+    color: red;
+}
+
+#all_articles .fa-pencil-square-o{
+    color: darkblue;
+    transition: .3s ease;
+}
+
+#all_articles .fa-pencil-square-o:hover{
+    color: blue;
+}
+
 article.main .wrap {
     border-left: 5px solid #5ad9e2;
     border-right: 5px solid #bc9bef

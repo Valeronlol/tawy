@@ -15,8 +15,6 @@ class AdminController extends MainController
     //Nesting service array
     public function getData(){
         return array_merge( parent::getData(), array(
-            'test' => 'asd',
-            'test2' => '31213',
             'admin_buttons' => array(
                 array(
                     'title' => 'Добавить статью',
@@ -24,18 +22,6 @@ class AdminController extends MainController
                     'id'    => 'add_art',
                     'slug'  => 'add'
                 ),
-                array(
-                    'title' => 'Редактировать статью',
-                    'i'     => 'fa fa-wrench fa-lg',
-                    'id'    => 'edit_art',
-                    'slug'  => 'edit'
-                ),
-                 array(
-                    'title' => 'Удалить статью',
-                    'i'     => 'fa fa-times fa-lg',
-                    'id'    => 'remove_art',
-                    'slug'  => 'remove'
-                )
             ),
 
         ));
@@ -43,7 +29,8 @@ class AdminController extends MainController
 
     public function indexAction(Request $request)
     {
-//        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!'); //FULL ACCESS DENY
+        // Database service
+        $dbservice = $this->get('DBservice');
 
         //Buttons redirect
         $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
@@ -52,7 +39,7 @@ class AdminController extends MainController
                 return $this->render( "admin/edit.html.twig", $this->getData());
             case 'add':
 
-                // Create form
+                // Create ADD form
                 $form = new Form();
                 $form = $this->createFormBuilder($form)
                     ->add('title', TextType::class)
@@ -68,9 +55,10 @@ class AdminController extends MainController
                 if ($form->isSubmitted() && $form->isValid()) {
                     $validFormData = $form->getData(); //obj
 
-                    $dbservice = $this->get('DBservice');
                     $dbservice->createAction( $validFormData->title, $validFormData->description, $validFormData->content );
                     if ($dbservice){
+                        $allprod = $dbservice->findProd();
+                        $this->setData(array('all' => $allprod));
                         $this->setData(array('chetko' => 'Статья добавлена!'));
                         return $this->render('admin/admin.html.twig', $this->getData());
                     }
@@ -81,14 +69,26 @@ class AdminController extends MainController
             case 'remove':
                 return $this->render( "admin/remove.html.twig", $this->getData());
             default:
+
+                //Реализовать вывод всех статей
+                $allprod = $dbservice->findProd();
+                $this->setData(array('all' => $allprod));
+//                print_r($allprod->getId()); exit;
+
                 return $this->render( "admin/admin.html.twig", $this->getData());
         }
     }
 
-    public function editAction(){
-
-        return $this->render( "admin/edit.html.twig", $this->getData());
+    public function editAction($productId){
+        echo $productId; exit;
+//        return $this->render( "admin/edit.html.twig", $this->getData());
     }
 
+    public function removeAction($productId){
+        // Database service
+        $dbservice = $this->get('DBservice');
+        $dbservice->removeAction($productId);
+        return $this->redirectToRoute('admin_index');
+    }
 
 }

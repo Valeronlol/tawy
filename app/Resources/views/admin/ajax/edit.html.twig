@@ -1,0 +1,25 @@
+<div class="cont">
+    <h3>Редактировать материал</h3>
+    <form method="POST" id="art_form" class="ajaxForm">
+        <div>
+            <label>ID: {{ art_id }}</label>
+            <input hidden id="art_id" type="text" name="art_id" value="{{ art_id }}">
+        </div>
+
+        <div>
+            <label for="art_title">Заголовок</label>
+            <input id="art_title" name="art_title" title="art_title" type="text" value="{{ art_title }}">
+        </div>
+
+        <div>
+            <label for="art_description">Описание</label>
+            <textarea rows="4" cols="50" name="art_description" id="art_description">{{ art_description }}</textarea>
+        </div>
+
+        <div>
+            <label for="art_content">Содержимое</label>
+            <textarea rows="4" cols="50" name="art_content" id="art_content">{{ art_content }}</textarea>
+        </div>
+        <input type="submit" value="Готово!" name="submit" id="art_submit">
+    </form>
+</div>

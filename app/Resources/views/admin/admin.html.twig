@@ -20,12 +20,11 @@
 {% endblock %}
 
 {% block content %}
-    {#<h1 style="text-align: center; color: red;">ADMIN body: {{ test }}, {{ test2 }}</h1>#}
-
     {% if chetko is defined %}
-        <span style="font-size: 20px; font-weight: bold; color: forestgreen; margin: 15px 0; display: block;">{{ chetko }}</span>
+        <span id="status_post" style="font-size: 20px; font-weight: bold; color: forestgreen; margin: 15px 0; display: block;">{{ chetko }}</span>
     {% endif %}
 <div class="wrap">
+    <div id="modal_ajax_admin"></div>
 <table id="all_articles">
     <tr>
         <th>Id записи</th>
@@ -35,16 +34,20 @@
         <th> </th>
     </tr>
     {% for a in all %}
-        <tr>
+        <tr class="num_{{ a.id }}">
             <td class="id">{{ a.id }}</td>
             <td class="title">{{ a.title }}</td>
             <td class="descr">{{ a.description }}</td>
-            <td><a href="{{ path('admin_remove', {'productId': a.id}) }}" class="btn_remove">
+            <td>
+                <a href="{{ path('admin_remove', {'productId': a.id}) }}" class="btn_remove">
                     <i class="fa fa-2x fa-times" aria-hidden="true" title="Удалить"></i>
-                </a></td>
-            <td><a href="{{ path('admin_edit', {'productId': a.id}) }}" class="btn_redit">
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('admin_edit', {'productId': a.id}) }}" class="btn_edit">
                     <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true" title="Редактировать"></i>
-                </a></td>
+                </a>
+            </td>
         </tr>
     {% endfor %}
 </table>

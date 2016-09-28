@@ -35,8 +35,8 @@ class AdminController extends MainController
         //Buttons redirect
         $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
         switch ($slug) {
-            case 'edit':
-                return $this->render( "admin/edit.html.twig", $this->getData());
+//            case 'edit':
+//                return $this->render( "admin/edit.html.twig", $this->getData());
             case 'add':
 
                 // Create ADD form
@@ -63,32 +63,55 @@ class AdminController extends MainController
                         return $this->render('admin/admin.html.twig', $this->getData());
                     }
                 }
-
                 return $this->render( "admin/add.html.twig", $this->getData() );
 
-            case 'remove':
-                return $this->render( "admin/remove.html.twig", $this->getData());
+//            case 'remove':
+//                return $this->render( "admin/remove.html.twig", $this->getData());
             default:
 
                 //Реализовать вывод всех статей
                 $allprod = $dbservice->findProd();
                 $this->setData(array('all' => $allprod));
 //                print_r($allprod->getId()); exit;
-
+                $this->setData(array('chetko' => 'Панель администратора'));
                 return $this->render( "admin/admin.html.twig", $this->getData());
         }
     }
 
     public function editAction($productId){
-        echo $productId; exit;
-//        return $this->render( "admin/edit.html.twig", $this->getData());
+
+        $dbservice = $this->get('DBservice');
+        $article = $dbservice->findProd($productId);
+
+        $this->setData(array(
+                "art_id" => $article->getId(),
+                "art_title" => $article->getTitle(),
+                "art_content" => $article->getContent(),
+                "art_description" => $article->getDescription()
+        ));
+        return $this->render( "admin/ajax/edit.html.twig", $this->getData());
+    }
+
+    public function saveEditAction(Request $request){
+        $data = $request->getContent();
+        parse_str($data, $output);
+
+        $dbservice = $this->get('DBservice');
+        if ($dbservice->updateAction($output))
+            print json_encode($output);
+
+        return $this->render( "admin/ajax/save.html.twig");
     }
 
     public function removeAction($productId){
-        // Database service
-        $dbservice = $this->get('DBservice');
-        $dbservice->removeAction($productId);
-        return $this->redirectToRoute('admin_index');
+
+        if (is_numeric($productId)){
+            $dbservice = $this->get('DBservice');
+            $dbservice->removeAction($productId);
+        }
+        else
+            return false;
+        return $this->render( "admin/remove.html.twig", $this->getData());
     }
 
 }

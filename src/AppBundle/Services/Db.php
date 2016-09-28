@@ -63,7 +63,7 @@ class Db extends Controller
     public function updateAction($productId)
     {
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('AppBundle:Product')->find($productId);
+        $product = $em->getRepository('AppBundle:Product')->find($productId['art_id']);
 
         if (!$product) {
             throw $this->createNotFoundException(
@@ -71,11 +71,11 @@ class Db extends Controller
             );
         }
 
-        $product->setContent('Mouse!');
-        $product->setDescription('Krasava!');
+        $product->setContent($productId['art_content']);
+        $product->setTitle($productId['art_title']);
+        $product->setDescription($productId['art_description']);
         $em->flush();
-
-        return $this->redirectToRoute('main_index');
+        return true;
     }
 
     public function removeAction($productId)

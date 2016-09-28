@@ -34,6 +34,10 @@ admin_edit:
     path: /admin/edit/{productId}
     defaults: { _controller: AppBundle:Admin:edit}
 
+admin_saveEdit:
+    path: /admin/save
+    defaults: { _controller: AppBundle:Admin:saveEdit}
+
 captcha_routing:
     resource: "@CaptchaBundle/Resources/config/routing.yml"
 

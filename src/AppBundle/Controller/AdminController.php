@@ -34,47 +34,36 @@ class AdminController extends MainController
 
         //Buttons redirect
         $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
-        switch ($slug) {
-//            case 'edit':
-//                return $this->render( "admin/edit.html.twig", $this->getData());
-            case 'add':
+        if( $slug == 'add'){
+            $form = new Form();
+            $form = $this->createFormBuilder($form)
+                ->add('title', TextType::class)
+                ->add('description', TextType::class)
+                ->add('content', 'textarea', array(
+                    'attr' => array('cols' => '120', 'rows' => '30')))
+                ->add('save', SubmitType::class, array('label' => 'Отправить'))
+                ->getForm();
+            $this->setData( array('form' => $form->createView()) );
+            $form->handleRequest($request);
 
-                // Create ADD form
-                $form = new Form();
-                $form = $this->createFormBuilder($form)
-                    ->add('title', TextType::class)
-                    ->add('description', TextType::class)
-                    ->add('content', 'textarea', array(
-                        'attr' => array('cols' => '120', 'rows' => '30')))
-                    ->add('save', SubmitType::class, array('label' => 'Отправить'))
-                    ->getForm();
-                $this->setData( array('form' => $form->createView()) );
-                $form->handleRequest($request);
-
-                //Form validation OK
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $validFormData = $form->getData(); //obj
-
-                    $dbservice->createAction( $validFormData->title, $validFormData->description, $validFormData->content );
-                    if ($dbservice){
-                        $allprod = $dbservice->findProd();
-                        $this->setData(array('all' => $allprod));
-                        $this->setData(array('chetko' => 'Статья добавлена!'));
-                        return $this->render('admin/admin.html.twig', $this->getData());
-                    }
+            //Form validation OK
+            if ($form->isSubmitted() && $form->isValid()) {
+                $validFormData = $form->getData(); //obj
+                $dbservice->createAction( $validFormData->title, $validFormData->description, $validFormData->content );
+                if ($dbservice){
+                    $allprod = $dbservice->findProd();
+                    $this->setData(array('all' => $allprod));
+                    $this->setData(array('chetko' => 'Статья добавлена!'));
+                    return $this->redirectToRoute('admin_index');
                 }
-                return $this->render( "admin/add.html.twig", $this->getData() );
-
-//            case 'remove':
-//                return $this->render( "admin/remove.html.twig", $this->getData());
-            default:
-
-                //Реализовать вывод всех статей
-                $allprod = $dbservice->findProd();
-                $this->setData(array('all' => $allprod));
-//                print_r($allprod->getId()); exit;
-                $this->setData(array('chetko' => 'Панель администратора'));
-                return $this->render( "admin/admin.html.twig", $this->getData());
+            }
+            return $this->render( "admin/add.html.twig", $this->getData() );
+        }
+        else{
+            $allprod = $dbservice->findProd();
+            $this->setData(array('all' => $allprod));
+            $this->setData(array('chetko' => 'Панель администратора'));
+            return $this->render( "admin/admin.html.twig", $this->getData());
         }
     }
 

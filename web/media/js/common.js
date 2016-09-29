@@ -95,6 +95,9 @@ function toggler(){
         e.preventDefault();
         runSubmitAjax($(this));
     });
+    $('body').on('click', '#close_butt' , function () {
+        $('#modal_ajax_admin').fadeOut(600);
+    });
 // END Admin Ajax actions
 
 //Авто-удаление букв из поля телефона

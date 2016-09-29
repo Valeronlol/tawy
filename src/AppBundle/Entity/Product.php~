@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -32,6 +33,14 @@ class Product
      * @ORM\Column(type="text")
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $brochure;
 
     /**
      * Get id
@@ -91,4 +100,29 @@ class Product
     {
         return $this->description;
     }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Product
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
 }

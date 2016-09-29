@@ -46,12 +46,15 @@ class Db extends Controller
         );
     }
 
-    public function createAction( $title, $description, $content)
+    public function createAction( $title, $description, $content, $imageFile, $imageName)
     {
+//        var_dump($imageName); exit;
         $product = new Product();
         $product->setTitle($title);
-        $product->setContent($content);
         $product->setDescription($description);
+        $product->setContent($content);
+        $product->setImageFile($imageFile);
+        $product->setImageName($imageName);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);

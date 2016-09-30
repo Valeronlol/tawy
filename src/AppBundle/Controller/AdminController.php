@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Form;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -33,9 +32,10 @@ class AdminController extends MainController
 
         //Buttons redirect
         $slug = isset($_GET['slug']) ? $_GET['slug'] : null;
-        if( $slug == 'add'){
-            $form = new Product();
-            $form = $this->createFormBuilder($form)
+        if( $slug == 'add')
+        {
+            $entityProd = new Product();
+            $form = $this->createFormBuilder($entityProd)
                 ->add('title', TextType::class)
                 ->add('description', TextType::class)
                 ->add('content', 'textarea', array(
@@ -46,10 +46,10 @@ class AdminController extends MainController
             $form->handleRequest($request);
             $this->setData( array('form' => $form->createView()) );
 
-            //Form validation OK
-            if ($form->isSubmitted() && $form->isValid()) {
+            //Form validation
+            if ($form->isSubmitted() && $form->isValid())
+            {
                 $validFormData = $form->getData(); //obj
-
                 $dbservice->createAction(
                     $validFormData->getTitle(),
                     $validFormData->getDescription(),
@@ -57,18 +57,26 @@ class AdminController extends MainController
                     $validFormData->getImageFile(),
                     $validFormData->getImageName()
                 );
-
                 $allprod = $dbservice->findProd();
-                $this->setData(array('all' => $allprod));
-                $this->setData(array('chetko' => 'Статья добавлена!'));
+//
+//                $imageName = $dbservice->findProd(292)
+//                                    ->getImageName();
+                $this->setData(array(
+                    'chetko' => 'Статья добавлена!',
+                    'all' => $allprod
+                ));
                 return $this->redirectToRoute('admin_index');
             }
             return $this->render( "admin/add.html.twig", $this->getData() );
         }
-        else{
+        else
+        {
             $allprod = $dbservice->findProd();
-            $this->setData(array('all' => $allprod));
-            $this->setData(array('chetko' => 'Панель администратора'));
+//            var_dump($allprod);
+            $this->setData(array(
+                'all' => $allprod,
+                'chetko' => 'Панель администратора'
+            ));
             return $this->render( "admin/admin.html.twig", $this->getData());
         }
     }

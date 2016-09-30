@@ -1,8 +1,6 @@
 <?php
 namespace AppBundle\Entity;
 
-namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -159,7 +157,6 @@ class Product
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-//        $this->imageName = $image;
 
         if ($image) {
             // It is required that at least one field changes if you are using doctrine

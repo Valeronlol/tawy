@@ -18,9 +18,10 @@ class Db extends Controller
         $this->container = $container;
     }
 
-    public function findProd( $id = 'all' ){
-
+    public function findProd( $id = 'all' )
+    {
         $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+
         if ($id === 'all'){
             return $repository->findAll();
         }

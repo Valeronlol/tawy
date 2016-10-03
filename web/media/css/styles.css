@@ -156,8 +156,9 @@ h1 {
 
 .valeron {
     display: inline-block;
-    font-family: 'Fredericka the Great', sans-serif;
+    /*font-family: 'Fredericka the Great', sans-serif;*/
     color: #fff;
+    line-height: 50px;
     font-size: 40px;
     text-decoration: none;
     border-bottom: 1px solid #ccc;
@@ -213,7 +214,7 @@ h1 {
 }
 
 #modal_ajax_admin{
-    position: absolute;
+    position: fixed;
     background: rgba(0,0,0, .3);
     top: 0;
     bottom: 0;
@@ -236,6 +237,7 @@ h1 {
     margin-left: 3%;
     margin-right: 3%;
 }
+
 
 #modal_ajax_admin input{
     text-align: center;
@@ -278,9 +280,17 @@ footer .spoiler-head {
     margin: 20px auto;
 }
 
+.captchaclass{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: #ccc;
+    font-size: 18px;
+}
+
 #form label{
     width: 100px;
-    display: inline-block;
+    display: none;
     text-align: left;
 }
 

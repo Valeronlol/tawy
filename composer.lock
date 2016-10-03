@@ -931,12 +931,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "4cb7a29869e4a9bef4f51986d48b1a3af76d3f48"
+                "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/4cb7a29869e4a9bef4f51986d48b1a3af76d3f48",
-                "reference": "4cb7a29869e4a9bef4f51986d48b1a3af76d3f48",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
+                "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
                 "shasum": ""
             },
             "require": {
@@ -970,7 +970,10 @@
             "autoload": {
                 "psr-4": {
                     "FOS\\UserBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -995,7 +998,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-09-12 15:04:02"
+            "time": "2016-09-30 08:33:06"
         },
         {
             "name": "imagine/imagine",

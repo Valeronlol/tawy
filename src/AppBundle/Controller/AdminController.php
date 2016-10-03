@@ -40,7 +40,7 @@ class AdminController extends MainController
                 ->add('description', TextType::class)
                 ->add('content', 'textarea', array(
                     'attr' => array('cols' => '120', 'rows' => '30')))
-                ->add('imageFile', FileType::class, array('required' => false, 'label' => 'Картинка'))
+                ->add('imageFile', FileType::class, array('required' => false, 'label' => 'Миниатюра'))
                 ->add('save', SubmitType::class, array('label' => 'Отправить'))
                 ->getForm();
             $form->handleRequest($request);
@@ -58,9 +58,7 @@ class AdminController extends MainController
                     $validFormData->getImageName()
                 );
                 $allprod = $dbservice->findProd();
-//
-//                $imageName = $dbservice->findProd(292)
-//                                    ->getImageName();
+
                 $this->setData(array(
                     'chetko' => 'Статья добавлена!',
                     'all' => $allprod

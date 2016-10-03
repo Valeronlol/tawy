@@ -18,7 +18,29 @@ function toggler(){
 	$('#cont_but span.disp_none').addClass('active');
 };
 
-  $('#cont_but').on('click', function(){//доп условие по взаимодействию с нижники кнопками
+//jQuery UI animate logo
+$('.valeron').textillate({ loop: true,
+    in: {
+        effect: 'rotateInDownLeft',
+        delayScale: 2,
+        delay: 150,
+        sequence: true,
+        shuffle: false,
+        sync: false,
+        reverse: false
+    },
+    out: {
+        effect: 'rotateOutDownLeft',
+        delayScale: 2,
+        delay: 100,
+        shuffle: false,
+        sync: false,
+        reverse: true
+    }
+});
+
+//доп условие по взаимодействию с нижники кнопками
+  $('#cont_but').on('click', function(){
   	if($('.spoiler-body').css("display") == "block"){
   		$('.spoiler-body').slideUp(500);
 			$('#cont_but i.fa-phone').removeClass('active');
@@ -97,6 +119,7 @@ function toggler(){
     });
     $('body').on('click', '#close_butt' , function () {
         $('#modal_ajax_admin').fadeOut(600);
+        $('#modal_ajax_admin div').remove();
     });
 // END Admin Ajax actions
 

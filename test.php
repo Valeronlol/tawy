@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-koluya
-=======
 kostya
->>>>>>> newbr

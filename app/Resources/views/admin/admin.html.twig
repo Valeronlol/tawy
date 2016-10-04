@@ -8,10 +8,11 @@
             <ul class="nav">
                 {% for but in admin_buttons %}
                     <li>
-                        <a id="{{ but.id }}"  class="navigation" href="{#{{ but.href }}#} {{ path('admin_index', {'slug': but.slug}) }}" title="{{ but.title }}">
+                        <a id="{{ but.id }}"  class="navigation" href="{{ path('admin_index', {'slug': but.slug}) }}" title="{{ but.title }}">
                             <i class="{{ but.i }}"></i>
                             <span class="disp_none">{{ but.title }}</span>
                         </a>
+                        <a class="navigation" href="{{ path('user_logout') }}"><span>Выйти</span></a>
                     </li>
                 {% endfor %}
             </ul>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{% if lang is defined %}{{ lang }}{% endif %}">
+
 <head>
-    <meta name="description" content="{{ descr }}">
-    <meta name="Keywords" content="{{ keywords }}">
+    <meta name="description" content="{% if descr is defined %}{{ descr }}{% endif %}">
+    <meta name="Keywords" content="{% if keywords is defined %}{{ keywords }}{% endif %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{% if title is defined %}{{ title }}{% endif %}</title>
     <link rel="stylesheet" href="{{ asset('/media/libs/font-awesome-4.5.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/media/libs/textillate/assets/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('/media/css/styles.css') }}">
@@ -17,31 +18,31 @@
 {% block header %}
 <header>
     <div class="wrap">
-        <a class="valeron" href="{{ path('admin_index') }}">{{ title|upper }}</a>
+        <a class="valeron" href="{{ path('admin_index') }}">{% if title is defined %}{{ title|upper }}{% endif %}</a>
         <ul class="nav">
             <li>
                 <a id="porf_but"  class="navigation  active" href="/" title="Портфолио">
                     <i class="fa fa-file-image-o fa-lg active"></i>
-                    <span class="disp_none">{{ top_menu_buttons.0 }}</span>
+                    <span class="disp_none">{% if top_menu_buttons is defined %}{{ top_menu_buttons.0 }}{% endif %}</span>
                 </a>
             </li>
             <li>
                 <a id="about_but" class="navigation" href="about.html" title="Обо мне">
                     <i class="fa fa-hand-peace-o fa-lg"></i>
-                    <span class="disp_none">{{ top_menu_buttons.1 }}</span>
+                    <span class="disp_none">{% if top_menu_buttons is defined %}{{ top_menu_buttons.1 }}{% endif %}</span>
                 </a>
             </li>
             </li>
             <li>
                 <a id="cont_but" class="navigation" href="#" title="Контакты">
                     <i class="fa fa-phone fa-lg"></i>
-                    <span class="disp_none">{{ top_menu_buttons.2 }}</span>
+                    <span class="disp_none">{% if top_menu_buttons is defined %}{{ top_menu_buttons.2 }}{% endif %}</span>
                 </a>
             </li>
             <li>
                 <a id="blog_but" class="navigation" href="blog.html" title="Блог">
                     <i class="fa fa-pencil fa-lg"></i>
-                    <span  class="disp_none">{{ top_menu_buttons.3 }}</span>
+                    <span  class="disp_none">{% if top_menu_buttons is defined %}{{ top_menu_buttons.3 }}{% endif %}</span>
                 </a>
             </li>
         </ul>
@@ -184,7 +185,9 @@
                     <br>
                     <textarea name="text" placeholder="Сообщение" required></textarea>
                     <br>
-                    {{ form_row(captcha, { 'label': 'ВВедите капчу', 'label_attr': {'class': 'captchaclass'} }) }}
+                    {% if form_row is defined %}
+                        {{ form_row(captcha, { 'label': 'ВВедите капчу', 'label_attr': {'class': 'captchaclass'} }) }}
+                    {% endif %}
                     <input type="submit" name="btnsubmit" value="Отправить">
                 </form>
             </div>
@@ -204,9 +207,7 @@
 {% endblock %}
 <script src="{{ asset('/media/libs/jquery-1.12.3.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-{#<script src="{{ asset('/media/libs/fancybox/jquery.fancybox.pack.js') }}"></script>#}
 <script src="{{ asset('/media/libs/fancybox/jquery.fancybox.js') }}"></script>
-<script src="{{ asset('/media/libs/textillate/jquery.textillate.js') }}"></script>
 <script src="{{ asset('/media/libs/textillate/jquery.textillate.js') }}"></script>
 <script src="{{ asset('/media/libs/textillate/assets/jquery.fittext.js') }}"></script>
 <script src="{{ asset('/media/libs/textillate/assets/jquery.lettering.js') }}"></script>

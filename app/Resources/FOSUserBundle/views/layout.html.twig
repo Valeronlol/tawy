@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <header>
+        <div class="wrap">
+            <a class="back_log valeron" href="{{ path('main_index') }}">Вернуться на главную</a>
+        </div>
+    </header>
+{% endblock %}
+{% block title %}Авторизация:{% endblock %}
+
+{% block content %}
+    <div id="form_l">
+        <h1>Страница авторизации</h1>
+        {% block fos_user_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

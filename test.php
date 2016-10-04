@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 koluya
+=======
+kostya
+>>>>>>> newbr

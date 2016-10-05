@@ -47,9 +47,8 @@ class Db extends Controller
         );
     }
 
-    public function createAction( $title, $description, $content, $imageFile, $imageName)
+    public function createAction( $title, $description, $content, $imageFile = null, $imageName = null)
     {
-//        var_dump($imageName); exit;
         $product = new Product();
         $product->setTitle($title);
         $product->setDescription($description);
@@ -61,7 +60,7 @@ class Db extends Controller
         $em->persist($product);
         $em->flush();
 
-        return new Response('Saved new product with id '.$product->getId());
+        return new Response('Saved new product with id ' . $product->getId());
     }
 
     public function updateAction($ajaxData)

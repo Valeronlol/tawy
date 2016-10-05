@@ -6,15 +6,13 @@
             <a class="valeron" href="{{ path('main_index') }}">{{ title|upper }}</a>
             {#<a class="valeron" href="{{ path('admin_test') }}">test</a>#}
             <ul class="nav">
-                {% for but in admin_buttons %}
-                    <li>
-                        <a id="{{ but.id }}"  class="navigation" href="{{ path('admin_index', {'slug': but.slug}) }}" title="{{ but.title }}">
-                            <i class="{{ but.i }}"></i>
-                            <span class="disp_none">{{ but.title }}</span>
-                        </a>
-                        <a class="navigation" href="{{ path('user_logout') }}"><span>Выйти</span></a>
-                    </li>
-                {% endfor %}
+                <li>
+                    <a id="add_art"  class="navigation" href="{{ path('admin_add') }}" title="Добавить статью">
+                        <i class="fa fa-file-code-o active fa-lg"></i>
+                        <span class="disp_none">Добавить статью</span>
+                    </a>
+                    <a class="navigation" href="{{ path('user_logout') }}"><span>Выйти</span></a>
+                </li>
             </ul>
         </div>
     </header>
@@ -50,7 +48,9 @@
                 </a>
             </td>
             <td>
-                <img width="100" height="100" src="{{ asset('images/products/') }}{{ a.imageName }}" alt="">
+                {% if a.imageName %}
+                    <img width="100" height="100" src="{{ asset('images/products/') }}{{ a.imageName }}" alt="">
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

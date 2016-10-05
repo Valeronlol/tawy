@@ -57,6 +57,7 @@ $('.valeron').textillate({ loop: true,
             type: "POST",
             data: parseInt(id.attr('href')),
             url: id.attr('href'),
+            dataType: "json",
             beforeSend: function(){
                 $('#status_post').fadeOut( 400);
             },
@@ -65,8 +66,8 @@ $('.valeron').textillate({ loop: true,
             },
             success: function(e)	{
                 id.parent().parent().remove();
-                $('#status_post').fadeIn(600).text('Статья удалена').css('color', 'darkred');
-                setTimeout(function(){ $('#status_post').text('Панель администратора').css('color', 'green'); }, 2500);
+                $('#status_post').fadeIn(600).text(e.message).css('color', 'darkred');
+                setTimeout(function(){ $('#status_post').text(e.default_message).css('color', 'green'); }, 2500);
             }
         })
     };
@@ -92,12 +93,15 @@ $('.valeron').textillate({ loop: true,
             url: "admin/save",
             dataType: "json",
             error: function(e){
-                console.log('saveeditAjax error : ' + e.message);
+                console.log('saveeditAjax error');
             },
             success: function(e){
                 $('#modal_ajax_admin').fadeOut(600);
-                $('#status_post').fadeIn(400).text('Статья отредактирована').css('color', 'darkblue');
-                setTimeout(function(){ $('#status_post').fadeIn(800).text('Панель администратора').css('color', 'green'); }, 2500);
+                $('#status_post').fadeIn(400).text(e.message).css('color', 'darkblue');
+                setTimeout(function(){ $('#status_post')
+                    .text(e.default_message)
+                    .css('color', 'green');
+                }, 2500);
                 $('.num_' + e.art_id).find('.title').text(e.art_title).parent()
                     .find('.descr').text(e.art_description);
 
@@ -127,13 +131,6 @@ $('.valeron').textillate({ loop: true,
 $('input[name=phone]').on('keyup', function(e){ 
   $(this).val($(this).val().replace( /[^\d+$]/g ,'')); 
 });
-
-
-
-
-
-
-
 
 
 

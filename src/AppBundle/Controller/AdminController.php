@@ -27,7 +27,7 @@ class AdminController extends MainController
     }
 
     /**
-     * Add article page, admin/add
+     * Add article page, /admin/add
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -69,7 +69,7 @@ class AdminController extends MainController
 
     /**
      * Ajax only function
-     * @param $productId
+     * @param integer $productId
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction($productId)
@@ -95,6 +95,11 @@ class AdminController extends MainController
     {
         $data = $request->request->all();
         $dbservice = $this->get('DBservice');
+
+        $data = array_merge( $data, array(
+            'message' => 'Статья отредактирована',
+            'default_message' => 'Панель администратора'
+        ) );
         $dbservice->updateAction($data);
 
         return new JsonResponse($data);
@@ -114,8 +119,11 @@ class AdminController extends MainController
         }
         else
             return false;
-
-        return $this->render( "admin/remove.html.twig", $this->getData());
+        $data = array(
+            'message' => 'Статья удалена',
+            'default_message' => 'Панель администратора'
+        );
+        return new JsonResponse($data);
     }
 
 }

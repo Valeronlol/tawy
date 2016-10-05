@@ -9,15 +9,18 @@ use AppBundle\Entity\Product;
 
 class Db extends Controller
 {
-//    protected $em;
     protected $container;
 
     public function __construct(EntityManager $entityManager, Container $container)
     {
-//        $this->em = $entityManager;
         $this->container = $container;
     }
 
+    /**
+     * Find elements
+     * @param string $id
+     * @return Product|\AppBundle\Entity\Product[]|array|object
+     */
     public function findProd( $id = 'all' )
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
@@ -30,6 +33,10 @@ class Db extends Controller
         }
     }
 
+    /**
+     * @param integer $productId
+     * @return Response
+     */
     public function showAction($productId)
     {
         $product = $this->getDoctrine()
@@ -47,6 +54,14 @@ class Db extends Controller
         );
     }
 
+    /**
+     * @param string $title
+     * @param string $description
+     * @param string $content
+     * @param object null $imageFile
+     * @param string null $imageName
+     * @return Response
+     */
     public function createAction( $title, $description, $content, $imageFile = null, $imageName = null)
     {
         $product = new Product();
@@ -63,6 +78,10 @@ class Db extends Controller
         return new Response('Saved new product with id ' . $product->getId());
     }
 
+    /**
+     * @param array $ajaxData
+     * @return bool
+     */
     public function updateAction($ajaxData)
     {
         $em = $this->getDoctrine()->getManager();
@@ -82,6 +101,11 @@ class Db extends Controller
         return true;
     }
 
+    /**
+     * Deleting by id
+     * @param integer $productId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function removeAction($productId)
     {
         $em = $this->getDoctrine()->getManager();

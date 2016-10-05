@@ -134,14 +134,14 @@ class Product
      *
      * @var string
      */
-    private $imageName;
+    private $imageName = null;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
-    private $updatedAt;
+    private $updatedAt = null;
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance

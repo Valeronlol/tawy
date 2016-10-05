@@ -23,7 +23,7 @@ db_remove:
     defaults: { _controller: AppBundle:Db:remove}
 
 admin_index:
-    path: /admin
+    path: /admin/{slug}
     defaults: { _controller: AppBundle:Admin:index}
 
 admin_remove:

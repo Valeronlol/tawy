@@ -185,7 +185,7 @@
                     <br>
                     <textarea name="text" placeholder="Сообщение" required></textarea>
                     <br>
-                    {% if form_row is defined %}
+                    {% if captcha is defined %}
                         {{ form_row(captcha, { 'label': 'ВВедите капчу', 'label_attr': {'class': 'captchaclass'} }) }}
                     {% endif %}
                     <input type="submit" name="btnsubmit" value="Отправить">

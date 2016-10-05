@@ -1,16 +1,15 @@
 <?php
-
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
-//TODO Переместить в модель
 use AppBundle\Entity\Contactme;
 
 class MainController extends Controller
 {
-    //service array
+    /**
+     * @var array service array
+     */
     private $data = array(
         'title' => 'Valeron',
         'descr' => 'Портфолио и блог Кузиванова Валерия. Статьи и заметки о веб разработке, верстке, HTML, CSS, JavaScript, фреймворках и front end трендах.',
@@ -19,16 +18,20 @@ class MainController extends Controller
         'top_menu_buttons' => array( 'Портфолио', 'Обо мне', 'Контакты', 'Блог'),
     );
 
-    //get data from service array
+    /**
+     * @return array get data from service array
+     */
     public function getData()
     {
         return $this->data;
     }
 
-    //set data to service array
-    public function setData($array)
+    /**
+     * @param array $setParam Added data
+     */
+    public function setData($setParam)
     {
-        $this->data = array_merge( $this->data, $array);
+        $this->data = array_merge( $this->data, $setParam);
     }
 
     public function indexAction(Request $request)
@@ -63,12 +66,18 @@ class MainController extends Controller
                 $this->sendMail($subject, $name, $contact);
                 $this->setData(array('email_status' => 'Сообщение отправлено.'));
             }
-
         }
         return $this->render( "base.html.twig", $this->getData());
     }
 
-    //TODO Переместить в модель
+    /**
+     * Send mail handler
+     * @param string $subject
+     * @param string $name
+     * @param string $contact
+     *
+     * @return bool
+     */
     public function sendMail($subject, $name, $contact)
     {
         $message = \Swift_Message::newInstance()
@@ -76,13 +85,18 @@ class MainController extends Controller
             ->setFrom('valerii.kuzivanov@gmail.com')
             ->setTo('green-travel.kg@mail.ru')
             ->setBody(
-                $this->renderView(
-                    'email/message.html.twig',
-                    array('name' => $name, 'contact' => $contact, 'subject' => $subject)
+                $this->renderView('email/message.html.twig',
+                    array(
+                        'name' => $name,
+                        'contact' => $contact,
+                        'subject' => $subject
+                    )
                 ),
                 'text/html'
             );
-        $this->get('mailer')->send($message);
+        if ( $this->get('mailer')->send($message) )
+            return true;
+        else
+            return false;
     }
-
 }

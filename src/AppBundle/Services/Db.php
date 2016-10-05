@@ -64,21 +64,22 @@ class Db extends Controller
         return new Response('Saved new product with id '.$product->getId());
     }
 
-    public function updateAction($productId)
+    public function updateAction($ajaxData)
     {
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('AppBundle:Product')->find($productId['art_id']);
+        $product = $em->getRepository('AppBundle:Product')->find($ajaxData['art_id']);
 
         if (!$product) {
             throw $this->createNotFoundException(
-                'No product found for id '.$productId
+                'No data found for id ' . $ajaxData
             );
         }
 
-        $product->setContent($productId['art_content']);
-        $product->setTitle($productId['art_title']);
-        $product->setDescription($productId['art_description']);
+        $product->setContent($ajaxData['art_content']);
+        $product->setTitle($ajaxData['art_title']);
+        $product->setDescription($ajaxData['art_description']);
         $em->flush();
+
         return true;
     }
 

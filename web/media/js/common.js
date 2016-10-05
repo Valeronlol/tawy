@@ -65,8 +65,8 @@ $('.valeron').textillate({ loop: true,
             },
             success: function(e)	{
                 id.parent().parent().remove();
-                $('#status_post').fadeIn(400).text('Статья удалена').css('color', 'darkred');
-                setTimeout(function(){ $('#status_post').fadeIn(800).text('Панель администратора').css('color', 'green'); }, 2500);
+                $('#status_post').fadeIn(600).text('Статья удалена').css('color', 'darkred');
+                setTimeout(function(){ $('#status_post').text('Панель администратора').css('color', 'green'); }, 2500);
             }
         })
     };
@@ -90,7 +90,7 @@ $('.valeron').textillate({ loop: true,
             type: "POST",
             data: $("#art_form").serialize(),
             url: "admin/save",
-            dataType:"json",
+            dataType: "json",
             error: function(e){
                 console.log('saveeditAjax error : ' + e.message);
             },

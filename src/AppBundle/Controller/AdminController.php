@@ -1,7 +1,7 @@
 <?php
-
 namespace AppBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -10,8 +10,12 @@ use AppBundle\Entity\Product;
 
 class AdminController extends MainController
 {
-    //Nesting service array
-    public function getData(){
+    /**
+     * Nesting data array getter
+     * @return array
+     */
+    public function getData()
+    {
         return array_merge( parent::getData(), array(
             'admin_buttons' => array(
                 array(
@@ -70,7 +74,6 @@ class AdminController extends MainController
         else
         {
             $allprod = $dbservice->findProd();
-//            var_dump($allprod);
             $this->setData(array(
                 'all' => $allprod,
                 'chetko' => 'Панель администратора'
@@ -79,8 +82,17 @@ class AdminController extends MainController
         }
     }
 
-    public function editAction($productId){
+    public function addAction($add)
+    {
 
+    }
+
+    /**
+     * @param integer $productId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($productId)
+    {
         $dbservice = $this->get('DBservice');
         $article = $dbservice->findProd($productId);
 
@@ -93,25 +105,34 @@ class AdminController extends MainController
         return $this->render( "admin/ajax/edit.html.twig", $this->getData());
     }
 
-    public function saveEditAction(Request $request){
-        $data = $request->getContent();
-        parse_str($data, $output);
-
+    /**
+     * AJAX only function
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function saveEditAction(Request $request)
+    {
+        $data = $request->request->all();
         $dbservice = $this->get('DBservice');
-        if ($dbservice->updateAction($output))
-            print json_encode($output);
+        $dbservice->updateAction($data);
 
-        return $this->render( "admin/ajax/save.html.twig");
+        return new JsonResponse($data);
     }
 
-    public function removeAction($productId){
-
-        if (is_numeric($productId)){
+    /**
+     * @param string $productId
+     * @return bool|\Symfony\Component\HttpFoundation\Response
+     */
+    public function removeAction($productId)
+    {
+        if (is_numeric($productId))
+        {
             $dbservice = $this->get('DBservice');
             $dbservice->removeAction($productId);
         }
         else
             return false;
+
         return $this->render( "admin/remove.html.twig", $this->getData());
     }
 

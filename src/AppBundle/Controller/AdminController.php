@@ -17,7 +17,6 @@ class AdminController extends MainController
      */
     public function indexAction(Request $request)
     {
-        $test = null;
         $dbservice = $this->get('DBservice');
         $allprod = $dbservice->findProd();
         $this->setData(array(

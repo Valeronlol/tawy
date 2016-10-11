@@ -315,9 +315,9 @@ footer .spoiler-head {
 }
 
 #form label{
-    width: 100px;
-    display: none;
-    text-align: left;
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 #form label[for="form_content"]{

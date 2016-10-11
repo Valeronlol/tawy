@@ -35,10 +35,10 @@ class AdminController extends MainController
     {
         $dbservice = $this->get('DBservice');
         $form = $this->createFormBuilder( new Product )
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
-            ->add('content', 'textarea', array( 'attr' => array('cols' => '120', 'rows' => '30' )))
-            ->add('imageFile', FileType::class, array('required' => false, 'label' => 'Миниатюра'))
+            ->add('title', TextType::class, array('label' => 'Заголовок'))
+            ->add('description', TextType::class, array('label' => 'Описание'))
+            ->add('content', 'textarea', array( 'label' => 'Содержание записи', 'attr' => array('cols' => '120', 'rows' => '30' )))
+            ->add('imageFile', FileType::class, array('label' => 'Миниатюра'))
             ->add('save', SubmitType::class, array('label' => 'Отправить'))
             ->getForm();
 
@@ -46,7 +46,7 @@ class AdminController extends MainController
         $this->setData( array('form' => $form->createView()) );
 
         //Form validation
-        if ($form->isSubmitted() && $form->isValid())
+        if ( $form->isSubmitted() && $form->isValid() )
         {
             $validFormData = $form->getData(); //obj
             $dbservice->createAction(

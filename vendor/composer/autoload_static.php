@@ -372,6 +372,13 @@ class ComposerStaticInit4455b649652b9166c1ad8dafc7efa11e
                 0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
             ),
         ),
+        'O' => 
+        array (
+            'Oneup\\UploaderBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/oneup/uploader-bundle',
+            ),
+        ),
         'M' => 
         array (
             'Metadata\\' => 

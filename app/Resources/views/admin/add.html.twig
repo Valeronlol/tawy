@@ -1,9 +1,28 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block content %}
-    {#<h1 style="text-align: center; color: red;">ADMIN body: {{ test }}, {{ test2 }}</h1>#}
-    <h1>Add PAGE</h1>
+    <script type="text/javascript" src="{{  asset('media/libs/dropzone/dropzone.js') }}"></script>
+    <script>
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            init: function() {
+                this.on("addedfile", function(file) { alert("Added file."); });
+            },
+            accept: function(file, done) {
+                if (file.name == "vasya.jpg") {
+                    done("Naha, you don't.");
+                }
+                else { done(); }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="{{ asset('media/libs/dropzone/dropzone.min.css') }}">
+    <h1>Добавить запись</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    <form id="myAwesomeDropzone" action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone"></form>
+
+
 {% endblock %}

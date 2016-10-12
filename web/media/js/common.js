@@ -134,11 +134,3 @@ $( document ).ready(function() {
 
 });
 
-Dropzone.options.myAwesomeDropzone = {
-    paramName: "img",
-    method: "post",
-    success : function(file, response){
-        console.log(file);
-        console.log(response);
-    }
-};

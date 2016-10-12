@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/phing/phing/classes',
     $vendorDir . '/propel/propel1/runtime/lib',
     $vendorDir . '/propel/propel1/generator/lib',
+    $vendorDir . '/phing/phing/classes',
 );

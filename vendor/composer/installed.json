@@ -3842,12 +3842,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-            "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1"
+            "reference": "42691e1806aa3faff2622dbdaae1c3562c925906"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
-            "reference": "cf2fa7dba1954645a8a28a4720d0dbb68b6fd6f1",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/42691e1806aa3faff2622dbdaae1c3562c925906",
+            "reference": "42691e1806aa3faff2622dbdaae1c3562c925906",
             "shasum": ""
         },
         "require": {
@@ -3861,18 +3861,20 @@
             "symfony/doctrine-bridge": "<2.7"
         },
         "require-dev": {
-            "doctrine/doctrine-bundle": "~1.3",
-            "swiftmailer/swiftmailer": "~4.3|~5",
-            "symfony/console": "~2.3|~3.0",
-            "symfony/phpunit-bridge": "~2.7|~3.0",
-            "symfony/validator": "~2.3|~3.0",
-            "symfony/yaml": "~2.3|~3.0",
-            "willdurand/propel-typehintable-behavior": "~1.0"
+            "doctrine/doctrine-bundle": "^1.3",
+            "friendsofphp/php-cs-fixer": "^1.11",
+            "phpunit/phpunit": "~4.8|~5.0",
+            "swiftmailer/swiftmailer": "^4.3 || ^5.0",
+            "symfony/console": "^2.7 || ^3.0",
+            "symfony/phpunit-bridge": "^2.7 || ^3.0",
+            "symfony/validator": "^2.7 || ^3.0",
+            "symfony/yaml": "^2.7 || ^3.0",
+            "willdurand/propel-typehintable-behavior": "^1.0"
         },
         "suggest": {
             "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
         },
-        "time": "2016-09-30 08:33:06",
+        "time": "2016-10-11 13:29:39",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {

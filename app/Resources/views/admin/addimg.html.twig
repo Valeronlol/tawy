@@ -1,0 +1,19 @@
+{% extends 'admin/add.html.twig' %}
+
+{% block content %}
+    <script type="text/javascript" src="{{  asset('media/libs/dropzone/dropzone.js') }}"></script>
+    <script>
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "img",
+            success : function(file, response){
+                console.log(file);
+                console.log(response);
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="{{ asset('media/libs/dropzone/dropzone.min.css') }}">
+    <h2 style="margin: 30px auto;">Перенесите файлы чтобы добавить к статье</h2>
+    <form style="margin: 30px auto;" id="myAwesomeDropzone" action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone"></form>
+
+    <a href="{{ path('admin_index') }}">Готово</a>
+{% endblock %}

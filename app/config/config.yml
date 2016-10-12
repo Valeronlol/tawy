@@ -193,3 +193,4 @@ oneup_uploader:
     mappings:
         gallery:
             frontend: dropzone
+            namer: app.cat_namer

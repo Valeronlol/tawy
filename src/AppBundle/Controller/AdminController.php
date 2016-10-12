@@ -49,7 +49,7 @@ class AdminController extends MainController
         if ( $form->isSubmitted() && $form->isValid() )
         {
             $validFormData = $form->getData(); //obj
-            $dbservice->createAction(
+            $res = $dbservice->createAction(
                 $validFormData->getTitle(),
                 $validFormData->getDescription(),
                 $validFormData->getContent(),
@@ -62,7 +62,7 @@ class AdminController extends MainController
                 'chetko' => 'Статья добавлена!',
                 'all' => $allprod
             ));
-            return $this->redirectToRoute('admin_index');
+            return $this->redirectToRoute('admin_addimg', array( 'id' => intval($res->getContent())));
         }
         return $this->render( "admin/add.html.twig", $this->getData() );
     }
@@ -124,6 +124,11 @@ class AdminController extends MainController
             'default_message' => 'Панель администратора'
         );
         return new JsonResponse($data);
+    }
+
+    public function addImgAction($id)
+    {
+        return $this->render( "admin/addimg.html.twig", $this->getData());
     }
 
 }

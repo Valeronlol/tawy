@@ -71,3 +71,7 @@ media:
 oneup_uploader:
     resource: .
     type: uploader
+
+admin_addimg:
+    path: /admin/addimg/{id}
+    defaults: { _controller: AppBundle:Admin:addImg}

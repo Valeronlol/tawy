@@ -4,9 +4,6 @@ parameters:
 
 
 services:
-#    service.db:
-#        class: AppBundle\Services\Db
-
     admin.category:
         class: AppBundle\Admin\CategoryAdmin
         arguments: [null, AppBundle\Entity\Category, null]
@@ -23,6 +20,9 @@ services:
 
     acme_hello.upload_listener:
         class: AppBundle\EventListener\UploadListener
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", '@service_container']
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
+    app.cat_namer:
+        class: AppBundle\Uploader\Naming\CatNamer
+        arguments: [@security.token_storage, '@service_container']

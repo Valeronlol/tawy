@@ -1,6 +1,14 @@
 UPGRADE 3.x
 ===========
 
+UPGRADE FROM 3.8 to 3.9
+=======================
+
+## Deprecated admin translator
+
+The `$translator` property and the corresponding methods (`setTranslator`, `getTranslator`, `trans` and `transChoice`) in `AbstractAdmin` are deprecated.
+Please use `CRUDController::trans` or twig templates instead.
+
 UPGRADE FROM 3.4 to 3.5
 =======================
 

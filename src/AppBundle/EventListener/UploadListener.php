@@ -1,10 +1,8 @@
 <?php
-
 namespace AppBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Oneup\UploaderBundle\Event\PostPersistEvent;
-use Symfony\Component\HttpFoundation\File\File;
 
 class UploadListener
 {
@@ -20,7 +18,8 @@ class UploadListener
 
     public function onUpload(PostPersistEvent $event)
     {
+//        $dbservice = $this->get('DBservice');
         $request = $event->getRequest();
-        $request->get('img');
+        $img = $request->get('img');
     }
 }

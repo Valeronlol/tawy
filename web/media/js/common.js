@@ -1,43 +1,43 @@
 $( document ).ready(function() {
 
-//fancybox
-$(".fan_img").fancybox();
+    //fancybox
+    $(".fan_img").fancybox();
 
-//Переключатель для футер кнопок контактов
-	$('.spoiler-body').css('display', 'none');
-    $('.spoiler-head button').click(function(){
-        $(this).parent().next().slideToggle(500);
+    //Переключатель для футер кнопок контактов
+        $('.spoiler-body').css('display', 'none');
+        $('.spoiler-head button').click(function(){
+            $(this).parent().next().slideToggle(500);
+            $("html, body").animate({ scrollTop: $(document).height() }, 400);
+        });
+
+    //Переключатель для хедер кнопок контактов
+    function toggler(){
+        $('.spoiler-body').slideDown(500);
         $("html, body").animate({ scrollTop: $(document).height() }, 400);
+        $('#cont_but i.fa-phone').addClass('active');
+        $('#cont_but span.disp_none').addClass('active');
+    };
+
+    //jQuery UI animate logo
+    $('.valeron').textillate({ loop: true,
+        in: {
+            effect: 'rotateInDownLeft',
+            delayScale: 2,
+            delay: 150,
+            sequence: true,
+            shuffle: false,
+            sync: false,
+            reverse: false
+        },
+        out: {
+            effect: 'rotateOutDownLeft',
+            delayScale: 2,
+            delay: 100,
+            shuffle: false,
+            sync: false,
+            reverse: true
+        }
     });
-
-//Переключатель для хедер кнопок контактов
-function toggler(){ 
-	$('.spoiler-body').slideDown(500);
-	$("html, body").animate({ scrollTop: $(document).height() }, 400);
-	$('#cont_but i.fa-phone').addClass('active');
-	$('#cont_but span.disp_none').addClass('active');
-};
-
-//jQuery UI animate logo
-$('.valeron').textillate({ loop: true,
-    in: {
-        effect: 'rotateInDownLeft',
-        delayScale: 2,
-        delay: 150,
-        sequence: true,
-        shuffle: false,
-        sync: false,
-        reverse: false
-    },
-    out: {
-        effect: 'rotateOutDownLeft',
-        delayScale: 2,
-        delay: 100,
-        shuffle: false,
-        sync: false,
-        reverse: true
-    }
-});
 
 //доп условие по взаимодействию с нижники кнопками
   $('#cont_but').on('click', function(){
@@ -125,13 +125,20 @@ $('.valeron').textillate({ loop: true,
         $('#modal_ajax_admin').fadeOut(600);
         $('#modal_ajax_admin div').remove();
     });
-// END Admin Ajax actions
+    // END Admin Ajax actions
 
-//Авто-удаление букв из поля телефона
-$('input[name=phone]').on('keyup', function(e){ 
-  $(this).val($(this).val().replace( /[^\d+$]/g ,'')); 
-});
-
-
+    //Авто-удаление букв из поля телефона
+    $('input[name=phone]').on('keyup', function(e){
+      $(this).val($(this).val().replace( /[^\d+$]/g ,''));
+    });
 
 });
+
+Dropzone.options.myAwesomeDropzone = {
+    paramName: "img",
+    method: "post",
+    success : function(file, response){
+        console.log(file);
+        console.log(response);
+    }
+};

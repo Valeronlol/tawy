@@ -4,8 +4,8 @@ parameters:
 
 
 services:
-    service.db:
-        class: AppBundle\Services\Db
+#    service.db:
+#        class: AppBundle\Services\Db
 
     admin.category:
         class: AppBundle\Admin\CategoryAdmin

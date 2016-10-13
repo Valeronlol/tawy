@@ -1,13 +1,14 @@
 <?php
 namespace AppBundle\Services;
 
+use AppBundle\Controller\MainController;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+//use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Product;
 
-class Db extends Controller
+class Db extends MainController
 {
     protected $container;
 
@@ -123,4 +124,21 @@ class Db extends Controller
         return $this->redirectToRoute('main_index');
     }
 
+    /**
+     * Ajax only function
+     * @param integer $productId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addAjaxImagesAction($productId, $url)
+    {
+//        $url = serialize(array($url));
+
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('AppBundle:Product')->find($productId);
+        $product->setImages($url);
+        $em->flush();
+
+        return $this->redirectToRoute('main_index');
+//        return $this->render( "admin/addimg.html.twig", $this->getData());
+    }
 }

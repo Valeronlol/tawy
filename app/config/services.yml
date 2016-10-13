@@ -20,7 +20,7 @@ services:
 
     acme_hello.upload_listener:
         class: AppBundle\EventListener\UploadListener
-        arguments: ["@doctrine.orm.entity_manager", '@service_container']
+        arguments: ["@doctrine.orm.entity_manager", '@service_container', "@request_stack"]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
     app.cat_namer:

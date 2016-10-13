@@ -126,8 +126,15 @@ class AdminController extends MainController
         return new JsonResponse($data);
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addImgAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        $session->set('id', $id);
+
         return $this->render( "admin/addimg.html.twig", $this->getData());
     }
 

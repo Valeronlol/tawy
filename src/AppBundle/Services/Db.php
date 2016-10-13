@@ -131,11 +131,20 @@ class Db extends MainController
      */
     public function addAjaxImagesAction($productId, $url)
     {
-//        $url = serialize(array($url));
-
         $em = $this->getDoctrine()->getManager();
         $product = $em->getRepository('AppBundle:Product')->find($productId);
-        $product->setImages($url);
+
+        $imgarr = $product->getImages($url);
+        if ( $imgarr )
+        {
+            $imgarr = unserialize($imgarr);
+            $imgarr[] = $url;
+            $product->setImages(serialize($imgarr));
+        }
+        else
+        {
+            $product->setImages(serialize(array($url)));
+        }
         $em->flush();
 
         return $this->redirectToRoute('main_index');

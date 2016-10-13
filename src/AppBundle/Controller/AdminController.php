@@ -62,7 +62,15 @@ class AdminController extends MainController
                 'chetko' => 'Статья добавлена!',
                 'all' => $allprod
             ));
-            return $this->redirectToRoute('admin_addimg', array( 'id' => intval($res->getContent())));
+
+            /**
+             * Create session post id
+             */
+            $id = intval($res->getContent());
+            $session = $this->getRequest()->getSession();
+            $session->set('id', $id);
+
+            return $this->render( "admin/addimg.html.twig", $this->getData());
         }
         return $this->render( "admin/add.html.twig", $this->getData() );
     }
@@ -124,18 +132,6 @@ class AdminController extends MainController
             'default_message' => 'Панель администратора'
         );
         return new JsonResponse($data);
-    }
-
-    /**
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function addImgAction($id)
-    {
-        $session = $this->getRequest()->getSession();
-        $session->set('id', $id);
-
-        return $this->render( "admin/addimg.html.twig", $this->getData());
     }
 
 }

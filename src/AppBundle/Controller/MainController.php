@@ -46,7 +46,7 @@ class MainController extends Controller
         $this->setData(array('captcha' => $form->createView()));
 
         // send message e-mail button handler
-        if(isset($_POST['btnsubmit'])){
+        if( isset($_POST['btnsubmit']) ){
             $subject = $_POST['text'];
             $name = $_POST['name'];
             $contact = $_POST['phone'];

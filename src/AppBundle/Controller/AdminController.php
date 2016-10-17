@@ -134,4 +134,21 @@ class AdminController extends MainController
         return new JsonResponse($data);
     }
 
+    public function ajaxRemoveImgAction(Request $request)
+    {
+        $data = $request->request->all();
+        $id = $this->container->get('session')->get('id');
+        $em = $this->getDoctrine()->getManager();
+
+        $arcticle = $em->getRepository('AppBundle:Product')->find($id);
+        $imgarr = unserialize($arcticle->getImages(  ));
+        $key = array_search( $data['url'] , $imgarr );
+        unset($imgarr[$key]);
+
+        $arcticle->setImages(serialize($imgarr));
+        $em->flush();
+
+        return new JsonResponse($imgarr);
+    }
+
 }

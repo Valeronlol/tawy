@@ -21,10 +21,5 @@ class CatNamer implements NamerInterface
         $dbservice = $this->container->get('DBservice');
 
         return "image_" . uniqid() . ".jpg";
-//        return sprintf('%s/%s.%s',
-//            $res,
-//            uniqid(),
-//            $file->getExtension()
-//        );
     }
 }

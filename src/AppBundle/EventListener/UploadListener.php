@@ -3,7 +3,8 @@ namespace AppBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Oneup\UploaderBundle\Event\PostPersistEvent;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\Exception\UploadException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class UploadListener
@@ -14,31 +15,40 @@ class UploadListener
     private $om;
 
     /**
-     * @var service_container
+     * @var @service_container
      */
     private $container;
+
     /**
      * @var RequestStack
      */
-    private $requestStack;
+    private $request;
 
+    /**
+     * UploadListener constructor.
+     * @param ObjectManager $om
+     * @param $container
+     * @param RequestStack $requestStack
+     */
     public function __construct(ObjectManager $om, $container, RequestStack $requestStack)
     {
         $this->container = $container;
         $this->om = $om;
-        $this->requestStack = $requestStack;
+        $this->request = $requestStack;
     }
 
+    /**
+     * @param PostPersistEvent $event
+     */
     public function onUpload(PostPersistEvent $event)
     {
         $dbservice = $this->container->get('DBservice');
         $file = $event->getFile();
         $fileUrl = $file->getPathName();
-//        $fileName = $file->getFileName();
         $productId = $this->container->get('session')->get('id');
-
         $dbservice->addAjaxImagesAction($productId, $fileUrl);
-//        var_dump($fileUrl); exit;
+
+        die ( json_encode($fileUrl) );
     }
 
 }

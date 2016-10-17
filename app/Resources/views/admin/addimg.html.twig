@@ -5,9 +5,35 @@
     <script>
         Dropzone.options.myAwesomeDropzone = {
             paramName: "img",
-            success : function(file, response){
-                console.log(file);
-                console.log(response);
+            dictDefaultMessage: 'Э суда файл тащи братик',
+            dictRemoveFile: '',
+            addRemoveLinks: true,
+            success : function(file, response)
+            {
+                var res = JSON.parse(response);
+                var vib = $('.dz-preview');
+
+                for ( var i = 0; i < vib.length; i++ )
+                {
+                    if ( $(vib[i]).attr('data-url') == undefined )
+                    {
+                        $(vib[i]).attr('data-url', res);
+                        break;
+                    }
+                }
+            },
+            removedfile: function (file)
+            {
+                var url = $(file.previewTemplate).attr('data-url');
+                $.ajax({
+                    type: "POST",
+                    data: { url : url },
+                    url: 'ajaxremoveimg',
+                    dataType: "json",
+                    success: function(e) {
+                        $(file.previewTemplate).remove();
+                    }
+                });
             }
         };
     </script>
@@ -15,5 +41,5 @@
     <h2 style="margin: 30px auto;">Перенесите файлы чтобы добавить к статье</h2>
     <form style="margin: 30px auto;" id="myAwesomeDropzone" action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone"></form>
 
-    <a href="{{ path('admin_index') }}">Готово</a>
+    <a id="ready_button" href="{{ path('admin_index') }}">Готово</a>
 {% endblock %}

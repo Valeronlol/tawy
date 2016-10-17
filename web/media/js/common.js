@@ -61,9 +61,6 @@ $( document ).ready(function() {
             beforeSend: function(){
                 $('#status_post').fadeOut( 400);
             },
-            error: function(e){
-                console.log('ajax error : ' + e);
-            },
             success: function(e)	{
                 id.parent().parent().remove();
                 $('#status_post').fadeIn(600).text(e.message).css('color', 'darkred');

@@ -72,6 +72,6 @@ oneup_uploader:
     resource: .
     type: uploader
 
-admin_addimg:
-    path: /admin/addimg
-    defaults: { _controller: AppBundle:Admin:addImg}
+db_ajaxremoveimg:
+    path: /admin/ajaxremoveimg
+    defaults: { _controller: AppBundle:Admin:ajaxRemoveImg}

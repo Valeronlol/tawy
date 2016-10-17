@@ -133,8 +133,8 @@ class Db extends MainController
     {
         $em = $this->getDoctrine()->getManager();
         $product = $em->getRepository('AppBundle:Product')->find($productId);
-
         $imgarr = $product->getImages($url);
+
         if ( $imgarr )
         {
             $imgarr = unserialize($imgarr);
@@ -148,6 +148,5 @@ class Db extends MainController
         $em->flush();
 
         return $this->redirectToRoute('main_index');
-//        return $this->render( "admin/addimg.html.twig", $this->getData());
     }
 }

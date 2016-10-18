@@ -36,7 +36,9 @@ class MainController extends Controller
 
     public function indexAction(Request $request)
     {
-        //captcha creating
+        /**
+         * build captcha
+         */
         $task = new Contactme();
         $task->setCaptchaCode('');
         $form = $this->createFormBuilder($task)
@@ -45,26 +47,33 @@ class MainController extends Controller
             ->getForm();
         $this->setData(array('captcha' => $form->createView()));
 
-        // send message e-mail button handler
-        if( isset($_POST['btnsubmit']) ){
-            $subject = $_POST['text'];
+        /**
+         * send message e-mail button handler
+         */
+        if ( $request->get('btnsubmit') )
+        {
+            $subject = $request->get('text');
             $name = $request->get('name');
             $contact = $request->get('phone');
             $captcha_enter = $request->get('form')['captchaCode'];
 
-            //validation entered information
+            /**
+             * validation entered information
+             */
             $form_valid = new Contactme($subject, $name, $contact, $captcha_enter);
             $validator = $this->get('validator');
             $errors = $validator->validate($form_valid);
             $this->setData(array('errors' => $errors));
 
-            //error handler
+            /**
+             * error handler
+             */
             if (count($errors) > 0)
             {
                 return $this->render('common/validation.html.twig', $this->getData());
             }
             else
-                {
+            {
                 $this->sendMail($subject, $name, $contact);
                 $this->setData(array('email_status' => 'Сообщение отправлено.'));
             }
@@ -96,9 +105,11 @@ class MainController extends Controller
                 ),
                 'text/html'
             );
+
         if ( $this->get('mailer')->send($message) )
+        {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 }

@@ -1,11 +1,9 @@
 <?php
 namespace AppBundle\Controller;
 
+use AppBundle\Form\adminAdd;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use AppBundle\Entity\Product;
 
 class AdminController extends MainController
@@ -34,14 +32,8 @@ class AdminController extends MainController
     public function addAction(Request $request)
     {
         $dbservice = $this->get('DBservice');
-        $form = $this->createFormBuilder( new Product )
-            ->add('title', TextType::class, array('label' => 'Заголовок'))
-            ->add('description', TextType::class, array('label' => 'Описание'))
-            ->add('content', 'textarea', array( 'label' => 'Содержание записи', 'attr' => array('cols' => '120', 'rows' => '30' )))
-            ->add('imageFile', FileType::class, array('label' => 'Миниатюра'))
-            ->add('save', SubmitType::class, array('label' => 'Отправить'))
-            ->getForm();
 
+        $form = $this->createForm(adminAdd::class, new Product);
         $form->handleRequest($request);
         $this->setData( array('form' => $form->createView()) );
 

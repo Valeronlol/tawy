@@ -298,7 +298,7 @@ footer .spoiler-body {
 footer .spoiler-head {
     padding-top: 7px;
 }
-#form button{
+form[name="admin_add"] button{
     height: 35px;
     cursor: pointer;
     line-height: 35px;
@@ -314,13 +314,13 @@ footer .spoiler-head {
     font-size: 18px;
 }
 
-#form label{
+form[name="admin_add"] label{
     width: 100%;
     display: block;
     text-align: center;
 }
 
-#form label[for="form_content"]{
+form[name="admin_add"] label[for="form_content"]{
     display: block;
     text-align: center;
     margin: 10px auto 2px;
@@ -358,7 +358,7 @@ footer .spoiler-head {
 }
 
 
-#form div{
+form[name="admin_add"] div{
     margin: 10px auto;
 }
 

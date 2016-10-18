@@ -2,6 +2,9 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Contactme;
 
@@ -13,7 +16,7 @@ class MainController extends Controller
     private $data = array(
         'title' => 'Valeron',
         'descr' => 'Портфолио и блог Кузиванова Валерия. Статьи и заметки о веб разработке, верстке, HTML, CSS, JavaScript, фреймворках и front end трендах.',
-        'keywords' => 'Кузиванов Валерий, портфолио, заказать сайт, front end developer, фронтенд разработчик, разработка сайтов, блог веб разработчика, создать интернет магазин',
+        'keywords' => 'Блог Кузиванова Валерия, веб разработка',
         'lang' => 'ru',
         'top_menu_buttons' => array( 'Портфолио', 'Обо мне', 'Контакты', 'Блог'),
     );
@@ -37,45 +40,42 @@ class MainController extends Controller
     public function indexAction(Request $request)
     {
         /**
-         * build captcha
+         * build captcha form
          */
         $task = new Contactme();
-        $task->setCaptchaCode('');
         $form = $this->createFormBuilder($task)
+            ->add('name', TextType::class, array('label' => false, 'attr' => array( 'placeholder' => 'Имя', 'class' => 'inp_cont') ))
+            ->add('contact', TextType::class, array('label' => false, 'attr' => array( 'placeholder' => 'Телефон', 'class' => 'inp_cont') ))
+            ->add('subject', TextareaType::class, array('label' => false, 'attr' => array( 'placeholder' => 'Сообщение') ))
             ->add('captchaCode', 'Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType', array(
-                'captchaConfig' => 'LoginCaptcha'))
+                'captchaConfig' => 'LoginCaptcha', 'label' => false , 'attr' => array( 'placeholder' => 'КАПЧА') ))
+            ->add('save', SubmitType::class, array('label' => 'Отправить'))
             ->getForm();
         $this->setData(array('captcha' => $form->createView()));
+        $form->handleRequest($request);
 
-        /**
-         * send message e-mail button handler
-         */
-        if ( $request->get('btnsubmit') )
+        $subject = $request->get('form')['subject'];
+        $name = $request->get('form')['name'];
+        $contact = $request->get('form')['contact'];
+        $captchaCode = $request->get('form')['captchaCode'];
+
+        if ( $form->isSubmitted() && $form->isValid() ) // valid
         {
-            $subject = $request->get('text');
-            $name = $request->get('name');
-            $contact = $request->get('phone');
-            $captcha_enter = $request->get('form')['captchaCode'];
+            $this->sendMail($subject, $name, $contact);
+            $this->setData(array('email_status' => 'Сообщение отправлено.'));
+            return $this->render( "base.html.twig", $this->getData());
+        }
 
-            /**
-             * validation entered information
-             */
-            $form_valid = new Contactme($subject, $name, $contact, $captcha_enter);
+        if ( $form->isSubmitted() && !$form->isValid() ) // not valid
+        {
+            $form_valid = new Contactme( $name, $subject, $contact, $captchaCode);
             $validator = $this->get('validator');
             $errors = $validator->validate($form_valid);
-            $this->setData(array('errors' => $errors));
 
-            /**
-             * error handler
-             */
-            if (count($errors) > 0)
+            if (count($errors) > 0) //display errors
             {
+                $this->setData(array('errors' => $errors));
                 return $this->render('common/validation.html.twig', $this->getData());
-            }
-            else
-            {
-                $this->sendMail($subject, $name, $contact);
-                $this->setData(array('email_status' => 'Сообщение отправлено.'));
             }
         }
         return $this->render( "base.html.twig", $this->getData());

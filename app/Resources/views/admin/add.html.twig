@@ -2,21 +2,12 @@
 
 {% block content %}
     <script type="text/javascript" src="{{  asset('media/libs/dropzone/dropzone.js') }}"></script>
-    {#<script>#}
-        {#Dropzone.options.myAwesomeDropzone = {#}
-            {#paramName: "img",#}
-            {#success : function(file, response){#}
-{#//                console.log(file);#}
-{#//                console.log(response);#}
-            {#}#}
-        {#};#}
-    {#</script>#}
+
     <link rel="stylesheet" href="{{ asset('media/libs/dropzone/dropzone.min.css') }}">
     <h1>Добавить запись</h1>
+
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
-
-    {#<form id="myAwesomeDropzone" action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone"></form>#}
 
 {% endblock %}

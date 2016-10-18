@@ -447,6 +447,12 @@ footer .wrap .keywords a:hover {
     text-decoration: underline
 }
 
+#form > div:nth-child(1), #form > div:nth-child(2) {
+    width: 100px;
+    display: inline-block;
+    margin: 5px;
+}
+
 footer input {
     width: 100px;
     display: inline-block;
@@ -455,10 +461,13 @@ footer input {
 }
 
 footer textarea {
-    width: 300px;
+    width: 280px;
     height: 65px;
-    margin: 5px 0 0 0;
-    resize: none
+    margin: 5px auto;
+    resize: none;
+}
+#captchaCode {
+    margin: 5px;
 }
 
 footer button {

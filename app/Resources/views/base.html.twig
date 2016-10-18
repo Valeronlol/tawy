@@ -179,17 +179,9 @@
         <div class="email">
             <div class="spoiler-head"><button id="message_me">Отправить мне сообщение <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></button></div>
             <div class="spoiler-body">
-                <form id="send_form" method="post" name='submitform'>
-                    <input type="text" name="name" placeholder="Имя" required />
-                    <input type="text"  name="phone" placeholder="Телефон" required title='В формате: цифры и знак "+"' />
-                    <br>
-                    <textarea name="text" placeholder="Сообщение" required></textarea>
-                    <br>
-                    {% if captcha is defined %}
-                        {{ form_row(captcha, { 'label': 'ВВедите капчу', 'label_attr': {'class': 'captchaclass'} }) }}
-                    {% endif %}
-                    <input type="submit" name="btnsubmit" value="Отправить">
-                </form>
+                {{ form_start(captcha) }}
+                {{ form_widget(captcha) }}
+                {{ form_end(captcha) }}
             </div>
             <p style="color: green; font-size: 18px; font-weight: bold;">
                 {% if email_status is defined %}

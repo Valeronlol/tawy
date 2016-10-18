@@ -21,8 +21,8 @@ class Contactme
     public $name;
     /**
      * @Assert\NotBlank(message = "Поле контактов - не может быть пустым")
-     * @Assert\Length(min=6, minMessage = "Поле контакт слишком короткое, минимум 6 символов!",
-     *      max=50, maxMessage = "Поле контакт слишком длинное, максимум 50 символов!")
+     * @Assert\Length(min=3, minMessage = "Поле контакт слишком короткое, минимум 6 символов!",
+     *      max=500, maxMessage = "Поле контакт слишком длинное, максимум 500 символов!")
      * @Assert\Regex(pattern="/(?:\d)?\d+/", message="Поле телефона должно содержать номер!")
      */
     public $contact;

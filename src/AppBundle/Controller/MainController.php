@@ -48,9 +48,9 @@ class MainController extends Controller
         // send message e-mail button handler
         if( isset($_POST['btnsubmit']) ){
             $subject = $_POST['text'];
-            $name = $_POST['name'];
-            $contact = $_POST['phone'];
-            $captcha_enter = $_POST['form']['captchaCode'];
+            $name = $request->get('name');
+            $contact = $request->get('phone');
+            $captcha_enter = $request->get('form')['captchaCode'];
 
             //validation entered information
             $form_valid = new Contactme($subject, $name, $contact, $captcha_enter);
@@ -59,10 +59,12 @@ class MainController extends Controller
             $this->setData(array('errors' => $errors));
 
             //error handler
-            if (count($errors) > 0) {
+            if (count($errors) > 0)
+            {
                 return $this->render('common/validation.html.twig', $this->getData());
             }
-            else{
+            else
+                {
                 $this->sendMail($subject, $name, $contact);
                 $this->setData(array('email_status' => 'Сообщение отправлено.'));
             }

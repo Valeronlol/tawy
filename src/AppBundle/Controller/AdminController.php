@@ -134,6 +134,10 @@ class AdminController extends MainController
         return new JsonResponse($data);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function ajaxRemoveImgAction(Request $request)
     {
         $data = $request->request->all();

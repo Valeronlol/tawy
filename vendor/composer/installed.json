@@ -180,56 +180,6 @@
         ]
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "v2.0.2",
-        "version_normalized": "2.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
-            "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2016-04-03 06:00:07",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
         "name": "symfony/polyfill-php70",
         "version": "v1.2.0",
         "version_normalized": "1.2.0.0",
@@ -3842,12 +3792,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-            "reference": "42691e1806aa3faff2622dbdaae1c3562c925906"
+            "reference": "4393a98891a03fb7628c546aee4e5ced699c83de"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/42691e1806aa3faff2622dbdaae1c3562c925906",
-            "reference": "42691e1806aa3faff2622dbdaae1c3562c925906",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/4393a98891a03fb7628c546aee4e5ced699c83de",
+            "reference": "4393a98891a03fb7628c546aee4e5ced699c83de",
             "shasum": ""
         },
         "require": {
@@ -3874,7 +3824,7 @@
         "suggest": {
             "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
         },
-        "time": "2016-10-11 13:29:39",
+        "time": "2016-10-17 07:51:36",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -4739,18 +4689,68 @@
         "description": "This bundle generates code for you"
     },
     {
-        "name": "phing/phing",
-        "version": "2.15.1",
-        "version_normalized": "2.15.1.0",
+        "name": "paragonie/random_compat",
+        "version": "v2.0.3",
+        "version_normalized": "2.0.3.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/phingofficial/phing.git",
-            "reference": "16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41"
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "c0125896dbb151380ab47e96c621741e79623beb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phingofficial/phing/zipball/16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41",
-            "reference": "16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
+            "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2016-10-17 15:23:22",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "phing/phing",
+        "version": "2.15.2",
+        "version_normalized": "2.15.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phingofficial/phing.git",
+            "reference": "0999ab4e94e609dc00998e3d1b88df843054db7c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phingofficial/phing/zipball/0999ab4e94e609dc00998e3d1b88df843054db7c",
+            "reference": "0999ab4e94e609dc00998e3d1b88df843054db7c",
             "shasum": ""
         },
         "require": {
@@ -4791,7 +4791,7 @@
             "siad007/versioncontrol_hg": "A library for interfacing with Mercurial repositories.",
             "tedivm/jshrink": "Javascript Minifier built in PHP"
         },
-        "time": "2016-10-11 09:24:10",
+        "time": "2016-10-13 09:01:45",
         "bin": [
             "bin/phing"
         ],

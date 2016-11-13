@@ -581,6 +581,10 @@ footer button {
     margin: 7px 0 0 3px
 }
 
+#LoginCaptcha_CaptchaDiv {
+    margin: 0 auto !important;
+}
+
 #blog_art p {
     margin-top: 10px
 }

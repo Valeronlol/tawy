@@ -75,3 +75,7 @@ oneup_uploader:
 db_ajaxremoveimg:
     path: /admin/ajaxremoveimg
     defaults: { _controller: AppBundle:Admin:ajaxRemoveImg}
+
+admin_send:
+    path: /ajaxsend
+    defaults: { _controller: AppBundle:Main:send}

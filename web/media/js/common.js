@@ -16,7 +16,7 @@ $( document ).ready(function() {
         $("html, body").animate({ scrollTop: $(document).height() }, 400);
         $('#cont_but i.fa-phone').addClass('active');
         $('#cont_but span.disp_none').addClass('active');
-    };
+    }
 
     //jQuery UI animate logo
     $('.valeron').textillate({ loop: true,
@@ -37,6 +37,16 @@ $( document ).ready(function() {
             sync: false,
             reverse: true
         }
+    });
+
+    // remove captcha copyright
+    $('a[title="BotDetect CAPTCHA Library for Symfony"]').remove();
+
+    //animate chat button
+    $( "#chat_butt" ).on('click', function (e) {
+        e.preventDefault();
+        $('#chat').animate({width:'toggle'},350);
+        // console.log('here');
     });
 
 //доп условие по взаимодействию с нижники кнопками
@@ -67,7 +77,7 @@ $( document ).ready(function() {
                 setTimeout(function(){ $('#status_post').text(e.default_message).css('color', 'green'); }, 2500);
             }
         })
-    };
+    }
 
     function runEditAjax(id){
         $.ajax({
@@ -81,7 +91,7 @@ $( document ).ready(function() {
                 $('#modal_ajax_admin').fadeIn(600).append(e);
             }
         })
-    };
+    }
 
     function runSubmitAjax(id){
         $.ajax({
@@ -104,7 +114,7 @@ $( document ).ready(function() {
 
             }
         })
-    };
+    }
 
     $(".btn_remove").on('click', function(e){
         e.preventDefault();
@@ -123,6 +133,21 @@ $( document ).ready(function() {
         $('#modal_ajax_admin div').remove();
     });
     // END Admin Ajax actions
+
+    // Send message ajax handler
+    $('#chat').on('submit', function (e) {
+        e.preventDefault();
+        message = $('textarea[name="chat_message"]').val();
+        $.ajax({
+            type: "POST",
+            data: {message: message},
+            url: 'ajaxsend',
+            dataType: "json",
+            success: function(e){
+                console.log('ok');
+            }
+        })
+    });
 
     //Авто-удаление букв из поля телефона
     $('input[name=phone]').on('keyup', function(e){

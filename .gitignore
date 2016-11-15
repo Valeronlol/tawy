@@ -7,7 +7,6 @@ src/Application/Sonata/MediaBundle/DependencyInjection/
 src/Application/Sonata/MediaBundle/Resources/config/routing/
 src/Application/Sonata/MediaBundle/Resources/views/
 web/uploads/
+web/images/
 nbproject/
-
-.gitignore
 /nbproject/private/

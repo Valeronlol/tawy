@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Contactme;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MainController extends Controller
 {
@@ -37,11 +38,13 @@ class MainController extends Controller
         $this->data = array_merge( $this->data, $setParam);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request)
     {
-        /**
-         * build captcha form
-         */
+        // Build captcha form
         $task = new Contactme();
         $form = $this->createFormBuilder($task)
             ->add('name', TextType::class, array('label' => false, 'attr' => array( 'placeholder' => 'Имя', 'class' => 'inp_cont') ))
@@ -79,6 +82,18 @@ class MainController extends Controller
             }
         }
         return $this->render( "base.html.twig", $this->getData());
+    }
+
+    /**
+     * telegram handler
+     */
+    public function sendAction(Request $request)
+    {
+        $data = $request->request->all();
+        $telegram = new TelegramController();
+        $telegram->teleSend($data['message']);
+
+        return new JsonResponse($data);
     }
 
     /**

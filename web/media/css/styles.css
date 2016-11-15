@@ -66,7 +66,41 @@ header .fa {
 
 header .fa:hover {
     color: #fff;
-    border-bottom: 2px solid #bc9bef
+    /*border-bottom: 2px solid #bc9bef*/
+}
+#chat {
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 55px;
+    z-index: 1;
+    border-radius: 3px;
+}
+#chat textarea {
+    padding: 7px;
+}
+#chat h3 {
+    display: block;
+    height: 20px;
+    margin: 10px;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+#chat input[type='submit'] {
+    display: block;
+    margin: 10px auto;
+    padding: 7px;
+    cursor: pointer;
+}
+#chat_butt{
+    display: block;
+    animation-name: dropHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 1.5s;
 }
 
 .underhead {
@@ -102,7 +136,7 @@ ul.nav li a.navigation {
 
 ul.nav li a.navigation:hover {
     color: #fff;
-    border-bottom: 3px solid #bc9bef;
+    /*border-bottom: 3px solid #bc9bef;*/
     height: 25px
 }
 
@@ -357,6 +391,14 @@ form[name="admin_add"] label[for="form_content"]{
     transform: rotate(-45deg);
 }
 
+#chat_butt {
+    display: inline-block !important;
+    /*width: 30px;*/
+    /*height: 30px;*/
+    cursor: pointer;
+    /*background: url("../img/Deep_Close.png") 50% 50% no-repeat;*/
+    /*background-size: cover;*/
+}
 
 form[name="admin_add"] div{
     margin: 10px auto;
@@ -469,7 +511,9 @@ footer textarea {
 #captchaCode {
     margin: 5px;
 }
-
+#form_subject {
+    padding: 7px;
+}
 footer button {
     display: block;
     width: 90px;
@@ -511,6 +555,10 @@ footer button {
     color: #ccc;
     background: #333;
     text-decoration: none
+}
+
+#LoginCaptcha_CaptchaImage{
+    padding-top: 5px;
 }
 
 .back_to a {
@@ -935,5 +983,13 @@ footer button {
 @media (max-width:400px) {
     #hexGrid {
         font-size: 13px
+    }
+}
+@keyframes dropHeader {
+    0% {
+        transform: translateY(-60px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }

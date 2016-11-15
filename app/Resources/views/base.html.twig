@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>{% if title is defined %}{{ title }}{% endif %}</title>
-    <link rel="stylesheet" href="{{ asset('/media/libs/font-awesome-4.5.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/media/libs/textillate/assets/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('/media/css/styles.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
@@ -20,6 +20,12 @@
     <div class="wrap">
         <a class="valeron" href="{{ path('admin_index') }}">{% if title is defined %}{{ title|upper }}{% endif %}</a>
         <ul class="nav">
+            <li>
+                <a class="navigation">
+                    <i title="Написать мне в чат" id="chat_butt" class="fa fa-telegram fa-lg" aria-hidden="true"></i>
+
+                </a>
+            </li>
             <li>
                 <a id="porf_but"  class="navigation  active" href="/" title="Портфолио">
                     <i class="fa fa-file-image-o fa-lg active"></i>
@@ -54,6 +60,11 @@
 {% block content %}
 <article class="main">
     <div class="wrap">
+        <form id="chat">
+            <h3>Отправить прямое сообщение в чат</h3>
+            <textarea name="chat_message" cols="50" placeholder="Что вы хотите сообщить мне?" rows="10"></textarea>
+            <input type='submit' value="Отправить">
+        </form>
         <ul id="hexGrid">
             <li class="hex">
                 <a class="hexIn" href="/media/portfolio/massaj.html">
